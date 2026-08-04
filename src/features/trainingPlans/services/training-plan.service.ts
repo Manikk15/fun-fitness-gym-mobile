@@ -87,7 +87,7 @@ export const trainingPlanService = {
     return s.docs.map((d) => asDay(d.id, d.data()));
   },
   async listPlanExercises(planId: string, dayId: string) {
-    const s = await getDocs(query(items(planId, dayId), orderBy('order')));
+    const s = await getDocs(query(items(planId, dayId), orderBy('displayOrder')));
     return s.docs.map((d) => asItem(d.id, d.data()));
   },
   async createWorkoutDay(planId: string, input: WorkoutDayInput) {
@@ -142,12 +142,10 @@ export const trainingPlanService = {
     await setDoc(ref, {
       id: ref.id,
       exerciseId: exercise.id,
-      exerciseName: exercise.name,
-      categoryId: exercise.categoryId,
-      categoryName: exercise.categoryName,
+      exerciseNameSnapshot: exercise.name,
+      categoryNameSnapshot: exercise.categoryName,
       ...input,
-      weightUnit: 'kg',
-      order: existing.length + 1,
+      displayOrder: existing.length + 1,
       active: true,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
@@ -183,7 +181,7 @@ export const trainingPlanService = {
     const batch = writeBatch(firestore);
     ordered.forEach((item, index) =>
       batch.update(doc(items(planId, dayId), item.id), {
-        order: index + 1,
+        displayOrder: index + 1,
         updatedAt: serverTimestamp(),
       }),
     );
@@ -202,7 +200,11 @@ export const trainingPlanService = {
       );
       if (!activeItems.length)
         issues.push(`${day.name} needs at least one active exercise.`);
-      if (activeItems.some((item) => item.sets < 1 || item.reps < 1))
+      if (
+        activeItems.some(
+          (item) => item.sets < 1 || item.sets > 20 || item.reps < 1 || item.reps > 100,
+        )
+      )
         issues.push(`${day.name} has an invalid exercise prescription.`);
     }
     return issues;
@@ -212,6 +214,7 @@ export const trainingPlanService = {
     if (issues.length) throw new Error(`training-plan/publish:${issues.join('|')}`);
     await updateDoc(doc(plans, planId), {
       status: 'published',
+      active: true,
       publishedAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     });
@@ -219,6 +222,7 @@ export const trainingPlanService = {
   moveTrainingPlanToDraft(planId: string) {
     return updateDoc(doc(plans, planId), {
       status: 'draft',
+      active: true,
       updatedAt: serverTimestamp(),
     });
   },

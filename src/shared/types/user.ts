@@ -15,6 +15,19 @@ export type UserProfile = {
   approvedBy?: string;
   approvedAt?: Timestamp | null;
   currentTrainingPlanType: TrainingPlanType | null;
+  assignedTrainingPlanId?: string | null;
+  assignedTrainingPlanNameSnapshot?: string | null;
+  assignedTrainingPlanType?: TrainingPlanType | null;
+  assignedAt?: Timestamp | null;
+  assignedBy?: string | null;
+};
+
+export type TrainingPlanAssignmentInput = {
+  id: string;
+  name: string;
+  trainingPlanType: TrainingPlanType;
+  status: 'published';
+  active: true;
 };
 
 export type CreateUserProfileInput = Omit<

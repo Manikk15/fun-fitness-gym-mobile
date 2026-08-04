@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AdminDashboard } from '../../features/members/presentation/screens/AdminDashboard';
 import { MembersListScreen } from '../../features/members/presentation/screens/MembersListScreen';
+import { MemberDetailsScreen } from '../../features/members/presentation/screens/MemberDetailsScreen';
 import { AdminProfileScreen } from '../../features/profile/presentation/screens/AdminProfileScreen';
 import { CategoryListScreen } from '../../features/categories/presentation/screens/CategoryListScreen';
 import { AddCategoryScreen } from '../../features/categories/presentation/screens/AddCategoryScreen';
@@ -12,15 +13,20 @@ import { AddExerciseScreen } from '../../features/exercises/presentation/screens
 import { EditExerciseScreen } from '../../features/exercises/presentation/screens/EditExerciseScreen';
 import { TrainingPlanListScreen } from '../../features/trainingPlans/presentation/screens/TrainingPlanListScreen';
 import { CreateTrainingPlanScreen } from '../../features/trainingPlans/presentation/screens/CreateTrainingPlanScreen';
+import { WorkoutDayListScreen } from '../../features/trainingPlans/presentation/screens/WorkoutDayListScreen';
+import { WorkoutExerciseListScreen } from '../../features/trainingPlans/presentation/screens/WorkoutExerciseListScreen';
+import { TrainingPlanDetailsScreen } from '../../features/trainingPlans/presentation/screens/TrainingPlanDetailsScreen';
 import type {
   AdminTabParamList,
   ExerciseStackParamList,
   TrainingPlanStackParamList,
+  MemberStackParamList,
 } from './admin-types';
 
 const Tabs = createBottomTabNavigator<AdminTabParamList>();
 const ExerciseStack = createNativeStackNavigator<ExerciseStackParamList>();
 const TrainingPlanStack = createNativeStackNavigator<TrainingPlanStackParamList>();
+const MemberStack = createNativeStackNavigator<MemberStackParamList>();
 
 function ExerciseNavigator() {
   return (
@@ -72,7 +78,39 @@ function TrainingPlanNavigator() {
         component={CreateTrainingPlanScreen}
         options={{ title: 'Add Training Plan' }}
       />
+      <TrainingPlanStack.Screen
+        name="TrainingPlanDetails"
+        component={TrainingPlanDetailsScreen}
+        options={{ title: 'Plan Details' }}
+      />
+      <TrainingPlanStack.Screen
+        name="WorkoutDayList"
+        component={WorkoutDayListScreen}
+        options={{ title: 'Workout Days' }}
+      />
+      <TrainingPlanStack.Screen
+        name="WorkoutExerciseList"
+        component={WorkoutExerciseListScreen}
+        options={{ title: 'Exercises' }}
+      />
     </TrainingPlanStack.Navigator>
+  );
+}
+
+function MemberNavigator() {
+  return (
+    <MemberStack.Navigator>
+      <MemberStack.Screen
+        name="MemberList"
+        component={MembersListScreen}
+        options={{ title: 'Members' }}
+      />
+      <MemberStack.Screen
+        name="MemberDetails"
+        component={MemberDetailsScreen}
+        options={{ title: 'Member Details' }}
+      />
+    </MemberStack.Navigator>
   );
 }
 
@@ -101,7 +139,7 @@ export function AdminNavigator() {
         options={{ title: 'Exercises' }}
       />
       <Tabs.Screen name="Plans" component={TrainingPlanNavigator} />
-      <Tabs.Screen name="Members" component={MembersListScreen} />
+      <Tabs.Screen name="Members" component={MemberNavigator} />
       <Tabs.Screen name="Profile" component={AdminProfileScreen} />
     </Tabs.Navigator>
   );

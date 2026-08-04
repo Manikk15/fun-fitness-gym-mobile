@@ -21,9 +21,27 @@ export const workoutDaySchema = z.object({
   description: z.string().trim().max(300, 'Use 300 characters or fewer.').nullable(),
 });
 export const planExerciseSchema = z.object({
-  sets: z.coerce.number().int().min(1).max(20),
-  reps: z.coerce.number().int().min(1).max(100),
-  targetWeight: z.coerce.number().min(0).max(1000).nullable(),
-  restSeconds: z.coerce.number().int().min(0).max(1800).nullable(),
-  notes: z.string().trim().max(250).nullable(),
+  sets: z.coerce
+    .number({ invalid_type_error: 'Enter the number of sets.' })
+    .int('Sets must be a whole number.')
+    .min(1, 'Sets must be at least 1.')
+    .max(20, 'Sets cannot exceed 20.'),
+  reps: z.coerce
+    .number({ invalid_type_error: 'Enter the number of reps.' })
+    .int('Reps must be a whole number.')
+    .min(1, 'Reps must be at least 1.')
+    .max(100, 'Reps cannot exceed 100.'),
+  targetWeight: z.preprocess(
+    (value) => (value === '' ? null : value),
+    z.coerce.number({ invalid_type_error: 'Enter a valid weight.' }).min(0).nullable(),
+  ),
+  restSeconds: z.preprocess(
+    (value) => (value === '' ? null : value),
+    z.coerce
+      .number({ invalid_type_error: 'Enter valid rest seconds.' })
+      .int('Rest must be a whole number.')
+      .min(0)
+      .max(600, 'Rest cannot exceed 600 seconds.')
+      .nullable(),
+  ),
 });

@@ -8,6 +8,10 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
     }
+    function isPublishedActivePlan(planId) {
+      return get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status == 'published'
+        && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true;
+    }
 
     match /users/{userId} {
       allow create: if signedIn() && request.auth.uid == userId
@@ -23,8 +27,47 @@ service cloud.firestore {
           && request.resource.data.role == 'member'
           && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])
             && request.resource.data.approvedBy == request.auth.uid)
-            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])));
+            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])
+            || (resource.data.status == 'active'
+              && request.resource.data.status == 'active'
+              && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+                'assignedTrainingPlanId',
+                'assignedTrainingPlanNameSnapshot',
+                'assignedTrainingPlanType',
+                'assignedAt',
+                'assignedBy',
+                'updatedAt'
+              ])
+              && ((request.resource.data.assignedTrainingPlanId == null
+                && request.resource.data.assignedTrainingPlanNameSnapshot == null
+                && request.resource.data.assignedTrainingPlanType == null
+                && request.resource.data.assignedAt == null
+                && request.resource.data.assignedBy == null)
+                || (request.resource.data.assignedTrainingPlanId != null
+                  && isPublishedActivePlan(request.resource.data.assignedTrainingPlanId)
+                  && request.resource.data.assignedTrainingPlanNameSnapshot
+                    == get(/databases/$(database)/documents/trainingPlans/$(request.resource.data.assignedTrainingPlanId)).data.name
+                  && request.resource.data.assignedTrainingPlanType
+                    == get(/databases/$(database)/documents/trainingPlans/$(request.resource.data.assignedTrainingPlanId)).data.trainingPlanType
+                  && request.resource.data.assignedAt == request.time
+                  && request.resource.data.assignedBy == request.auth.uid)))));
       allow delete: if false;
+    }
+
+    match /memberTrainingAssignments/{assignmentId} {
+      allow read: if isActiveAdmin()
+        || (signedIn() && resource.data.memberId == request.auth.uid);
+      allow create: if isActiveAdmin()
+        && request.resource.data.memberId != request.auth.uid
+        && request.resource.data.assignedBy == request.auth.uid
+        && request.resource.data.timestamp == request.time
+        && get(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.role == 'member'
+        && get(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.status == 'active'
+        && request.resource.data.newPlanId
+          == getAfter(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.assignedTrainingPlanId
+        && (request.resource.data.newPlanId == null
+          || isPublishedActivePlan(request.resource.data.newPlanId));
+      allow update, delete: if false;
     }
 
     match /categories/{categoryId} {
@@ -55,17 +98,26 @@ service cloud.firestore {
       allow delete: if false;
 
       match /workoutDays/{dayId} {
-        allow read, create, update: if isActiveAdmin()
+        allow read: if isActiveAdmin();
+        allow create, update: if isActiveAdmin()
+          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true
+          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'
           && request.resource.data.order >= 1;
         allow delete: if false;
 
         match /exercises/{itemId} {
-          allow read, create, update: if isActiveAdmin()
+          allow read: if isActiveAdmin();
+          allow create, update: if isActiveAdmin()
+            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true
+            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'
             && request.resource.data.sets >= 1
+            && request.resource.data.sets <= 20
             && request.resource.data.reps >= 1
-            && request.resource.data.order >= 1
+            && request.resource.data.reps <= 100
+            && request.resource.data.displayOrder >= 1
             && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)
-            && (request.resource.data.restSeconds == null || request.resource.data.restSeconds >= 0);
+            && (request.resource.data.restSeconds == null
+              || (request.resource.data.restSeconds >= 0 && request.resource.data.restSeconds <= 600));
           allow delete: if false;
         }
       }

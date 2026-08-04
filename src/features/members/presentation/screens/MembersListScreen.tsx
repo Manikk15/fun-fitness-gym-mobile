@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Modal, Pressable, RefreshControl, ScrollView, Text, View } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { useAuth } from '../../../auth/context';
 import {
@@ -12,11 +13,14 @@ import {
 } from '../../../../shared/components';
 import { userService } from '../../../../shared/services';
 import type { UserProfile } from '../../../../shared/types';
+import type { MemberStackParamList } from '../../../../shared/navigation';
 
 type MemberTab = 'pending' | 'active' | 'restricted';
 type Decision = { member: UserProfile; status: 'active' | 'rejected' };
 
 export function MembersListScreen() {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<MemberStackParamList, 'MemberList'>>();
   const { user } = useAuth();
   const { showToast } = useToast();
   const [members, setMembers] = useState<UserProfile[]>([]);
@@ -118,6 +122,14 @@ export function MembersListScreen() {
                     {member.status} ·{' '}
                     {member.createdAt?.toDate().toLocaleDateString() ?? 'New member'}
                   </Text>
+                  <Pressable
+                    className="mt-3"
+                    onPress={() =>
+                      navigation.navigate('MemberDetails', { memberId: member.uid })
+                    }
+                  >
+                    <Text className="font-semibold text-brand-700">View details</Text>
+                  </Pressable>
                   {tab === 'pending' && member.uid !== user?.uid ? (
                     <View className="mt-4 flex-row gap-3">
                       <Pressable

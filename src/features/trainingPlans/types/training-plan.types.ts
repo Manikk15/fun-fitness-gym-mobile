@@ -33,16 +33,13 @@ export type WorkoutDay = {
 export type PlanExercise = {
   id: string;
   exerciseId: string;
-  exerciseName: string;
-  categoryId: string;
-  categoryName: string;
+  exerciseNameSnapshot: string;
+  categoryNameSnapshot: string;
   sets: number;
   reps: number;
   targetWeight: number | null;
-  weightUnit: 'kg';
   restSeconds: number | null;
-  notes: string | null;
-  order: number;
+  displayOrder: number;
   active: boolean;
   createdAt: Timestamp | null;
   updatedAt: Timestamp | null;
@@ -54,5 +51,5 @@ export type TrainingPlanInput = Pick<
 export type WorkoutDayInput = Pick<WorkoutDay, 'name' | 'description'>;
 export type PlanExerciseInput = Pick<
   PlanExercise,
-  'sets' | 'reps' | 'targetWeight' | 'restSeconds' | 'notes'
+  'sets' | 'reps' | 'targetWeight' | 'restSeconds'
 >;

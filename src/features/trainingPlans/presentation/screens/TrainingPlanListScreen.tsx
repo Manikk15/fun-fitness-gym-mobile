@@ -12,6 +12,8 @@ import {
 } from '../../../../shared/components';
 import type { TrainingPlanStackParamList } from '../../../../shared/navigation';
 import { trainingPlanService } from '../../services/training-plan.service';
+import { TrainingPlanLifecycleActions } from '../components/TrainingPlanLifecycleActions';
+import { TrainingPlanStatusBadge } from '../components/TrainingPlanStatusBadge';
 import type {
   TrainingPlan,
   TrainingPlanStatus,
@@ -183,16 +185,34 @@ export function TrainingPlanListScreen() {
           <View className="mt-5 gap-3">
             {filtered.map((plan) => (
               <View key={plan.id} className="rounded-2xl bg-white p-4">
-                <Text className="text-lg font-bold text-slate-900">{plan.name}</Text>
+                <View className="flex-row items-start justify-between gap-3">
+                  <Text className="flex-1 text-lg font-bold text-slate-900">
+                    {plan.name}
+                  </Text>
+                  <TrainingPlanStatusBadge status={plan.status} />
+                </View>
                 <Text className="mt-1 text-sm text-slate-500">
-                  {typeLabels[plan.trainingPlanType]} ·{' '}
-                  {plan.status.charAt(0).toUpperCase() + plan.status.slice(1)}
+                  {typeLabels[plan.trainingPlanType]}
                 </Text>
                 <Text className="mt-3 text-sm font-medium text-slate-700">
                   {plan.workoutDayCount} workout{' '}
                   {plan.workoutDayCount === 1 ? 'day' : 'days'} · {plan.exerciseCount}{' '}
                   {plan.exerciseCount === 1 ? 'exercise' : 'exercises'}
                 </Text>
+                <View className="mt-4">
+                  <PrimaryButton
+                    label="Open Plan"
+                    onPress={() =>
+                      navigation.navigate('TrainingPlanDetails', { planId: plan.id })
+                    }
+                  />
+                </View>
+                <View className="mt-3">
+                  <TrainingPlanLifecycleActions
+                    plan={plan}
+                    onChanged={() => load(true)}
+                  />
+                </View>
               </View>
             ))}
             {!filtered.length ? (

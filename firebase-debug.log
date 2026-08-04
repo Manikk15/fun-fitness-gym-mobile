@@ -1,0 +1,355 @@
+[debug] [2026-08-04T12:59:40.792Z] ----------------------------------------------------------------------
+[debug] [2026-08-04T12:59:40.794Z] Command:       /home/manik-devops/.nvm/versions/node/v24.16.0/bin/node /home/manik-devops/.nvm/versions/node/v24.16.0/bin/firebase deploy --only firestore:rules
+[debug] [2026-08-04T12:59:40.795Z] CLI Version:   15.25.1
+[debug] [2026-08-04T12:59:40.795Z] Platform:      linux
+[debug] [2026-08-04T12:59:40.795Z] Node Version:  v24.16.0
+[debug] [2026-08-04T12:59:40.795Z] Detected Agent: codex_cli
+[debug] [2026-08-04T12:59:40.796Z] Time:          Tue Aug 04 2026 18:29:40 GMT+0530 (India Standard Time)
+[debug] [2026-08-04T12:59:40.796Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-08-04T12:59:41.312Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-08-04T12:59:41.312Z] > authorizing via signed-in user (maniksharma555.ms@gmail.com)
+[debug] [2026-08-04T12:59:41.312Z] [iam] checking project fun-fitness-gym for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-08-04T12:59:41.321Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:41.321Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:41.322Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions [none]
+[debug] [2026-08-04T12:59:41.322Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions  x-goog-user-project=fun-fitness-gym
+[debug] [2026-08-04T12:59:41.322Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-08-04T12:59:42.873Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions 200
+[debug] [2026-08-04T12:59:42.873Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'fun-fitness-gym'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-08-04T12:59:42.875Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:42.875Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:42.876Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) [none]
+[debug] [2026-08-04T12:59:43.037Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) 200
+[debug] [2026-08-04T12:59:43.037Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) {"name":"projects/fun-fitness-gym/databases/(default)","uid":"04483aad-6c0e-4e96-8ceb-bd7f5803aa6a","createTime":"2026-08-04T05:23:23.722147Z","updateTime":"2026-08-04T05:23:23.722147Z","locationId":"asia-south2","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-08-04T11:59:43.020751Z","appEngineIntegrationMode":"DISABLED","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IPK4+NODh5YDMNCVn8XQhpYD"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-08-04T12:59:43.039Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:43.040Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:43.040Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [none]
+[debug] [2026-08-04T12:59:43.040Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [omitted]
+[debug] [2026-08-04T12:59:44.601Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test 200
+[debug] [2026-08-04T12:59:44.602Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-08-04T12:59:44.606Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:44.606Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:44.606Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases pageSize=10&pageToken=
+[debug] [2026-08-04T12:59:45.184Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases 200
+[debug] [2026-08-04T12:59:45.185Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases {"releases":[{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/b960160b-6a79-4a85-a94e-ff0b7ad50e2a","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T12:58:15.907017Z"}]}
+[debug] [2026-08-04T12:59:45.185Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:45.186Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:45.186Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/b960160b-6a79-4a85-a94e-ff0b7ad50e2a [none]
+[debug] [2026-08-04T12:59:46.501Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/b960160b-6a79-4a85-a94e-ff0b7ad50e2a 200
+[debug] [2026-08-04T12:59:46.501Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/b960160b-6a79-4a85-a94e-ff0b7ad50e2a [omitted]
+[info] i  firestore: uploading rules firestore.rules... 
+[debug] [2026-08-04T12:59:46.504Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:46.504Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:46.505Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [none]
+[debug] [2026-08-04T12:59:46.505Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [omitted]
+[debug] [2026-08-04T12:59:47.148Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets 200
+[debug] [2026-08-04T12:59:47.148Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets {"name":"projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46","source":{"files":[{"content":"rules_version = '2';\n\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    function signedIn() { return request.auth != null; }\n    function isActiveAdmin() {\n      return signedIn()\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';\n    }\n\n    match /users/{userId} {\n      allow create: if signedIn() && request.auth.uid == userId\n        && request.resource.data.uid == request.auth.uid\n        && request.resource.data.role == 'member'\n        && request.resource.data.status == 'pending'\n        && request.resource.data.currentTrainingPlanType == null;\n      allow read: if signedIn() && (request.auth.uid == userId || isActiveAdmin());\n      allow update: if (signedIn() && request.auth.uid == userId\n        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'email', 'updatedAt']))\n        || (isActiveAdmin() && request.auth.uid != userId\n          && resource.data.role == 'member'\n          && request.resource.data.role == 'member'\n          && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])\n            && request.resource.data.approvedBy == request.auth.uid)\n            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])));\n      allow delete: if false;\n    }\n\n    match /categories/{categoryId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /exercises/{exerciseId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlanTemplates/{templateId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlans/{planId} {\n      allow read: if isActiveAdmin();\n      allow create: if isActiveAdmin()\n        && request.resource.data.createdBy == request.auth.uid\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow update: if isActiveAdmin()\n        && request.resource.data.createdBy == resource.data.createdBy\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow delete: if false;\n\n      match /workoutDays/{dayId} {\n        allow read: if isActiveAdmin();\n        allow create, update: if isActiveAdmin()\n          && request.resource.data.order >= 1;\n        allow delete: if false;\n\n        match /exercises/{itemId} {\n          allow read, create, update: if isActiveAdmin()\n            && request.resource.data.sets >= 1\n            && request.resource.data.reps >= 1\n            && request.resource.data.order >= 1\n            && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)\n            && (request.resource.data.restSeconds == null || request.resource.data.restSeconds >= 0);\n          allow delete: if false;\n        }\n      }\n    }\n  }\n}\n","name":"firestore.rules"}]},"createTime":"2026-08-04T12:59:46.973199Z","metadata":{"services":["cloud.firestore"]}}
+[debug] [2026-08-04T12:59:47.149Z] [rules] created ruleset projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46
+[debug] [2026-08-04T12:59:47.150Z] [rules] releasing cloud.firestore with ruleset projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46
+[debug] [2026-08-04T12:59:47.151Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:47.151Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T12:59:47.152Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore [none]
+[debug] [2026-08-04T12:59:47.152Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"release":{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46"}}
+[debug] [2026-08-04T12:59:47.666Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore 200
+[debug] [2026-08-04T12:59:47.666Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T12:59:47.421388Z"}
+[debug] [2026-08-04T12:59:47.666Z] [rules] updated release projects/fun-fitness-gym/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/fun-fitness-gym/overview
+[debug] [2026-08-04T13:01:16.839Z] ----------------------------------------------------------------------
+[debug] [2026-08-04T13:01:16.841Z] Command:       /home/manik-devops/.nvm/versions/node/v24.16.0/bin/node /home/manik-devops/.nvm/versions/node/v24.16.0/bin/firebase deploy --only firestore:rules
+[debug] [2026-08-04T13:01:16.841Z] CLI Version:   15.25.1
+[debug] [2026-08-04T13:01:16.841Z] Platform:      linux
+[debug] [2026-08-04T13:01:16.841Z] Node Version:  v24.16.0
+[debug] [2026-08-04T13:01:16.841Z] Detected Agent: codex_cli
+[debug] [2026-08-04T13:01:16.841Z] Time:          Tue Aug 04 2026 18:31:16 GMT+0530 (India Standard Time)
+[debug] [2026-08-04T13:01:16.841Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-08-04T13:01:17.326Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-08-04T13:01:17.326Z] > authorizing via signed-in user (maniksharma555.ms@gmail.com)
+[debug] [2026-08-04T13:01:17.326Z] [iam] checking project fun-fitness-gym for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-08-04T13:01:17.334Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:17.335Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:17.335Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions [none]
+[debug] [2026-08-04T13:01:17.335Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions  x-goog-user-project=fun-fitness-gym
+[debug] [2026-08-04T13:01:17.335Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-08-04T13:01:18.806Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions 200
+[debug] [2026-08-04T13:01:18.806Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'fun-fitness-gym'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-08-04T13:01:18.814Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:18.815Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:18.816Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) [none]
+[debug] [2026-08-04T13:01:18.996Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) 200
+[debug] [2026-08-04T13:01:18.997Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) {"name":"projects/fun-fitness-gym/databases/(default)","uid":"04483aad-6c0e-4e96-8ceb-bd7f5803aa6a","createTime":"2026-08-04T05:23:23.722147Z","updateTime":"2026-08-04T05:23:23.722147Z","locationId":"asia-south2","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-08-04T12:01:18.985474Z","appEngineIntegrationMode":"DISABLED","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IMzV2YGEh5YDMNCVn8XQhpYD"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-08-04T13:01:19.000Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:19.001Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:19.001Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [none]
+[debug] [2026-08-04T13:01:19.001Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [omitted]
+[debug] [2026-08-04T13:01:20.508Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test 200
+[debug] [2026-08-04T13:01:20.508Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-08-04T13:01:20.510Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:20.510Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:20.511Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases pageSize=10&pageToken=
+[debug] [2026-08-04T13:01:21.948Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases 200
+[debug] [2026-08-04T13:01:21.949Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases {"releases":[{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T12:59:47.421388Z"}]}
+[debug] [2026-08-04T13:01:21.951Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:21.952Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:21.953Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46 [none]
+[debug] [2026-08-04T13:01:22.296Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46 200
+[debug] [2026-08-04T13:01:22.297Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/73f2c13b-3927-4286-8f33-f99ab51d5d46 [omitted]
+[info] i  firestore: uploading rules firestore.rules... 
+[debug] [2026-08-04T13:01:22.301Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:22.302Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:22.303Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [none]
+[debug] [2026-08-04T13:01:22.303Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [omitted]
+[debug] [2026-08-04T13:01:22.700Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets 200
+[debug] [2026-08-04T13:01:22.700Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets {"name":"projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b","source":{"files":[{"content":"rules_version = '2';\n\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    function signedIn() { return request.auth != null; }\n    function isActiveAdmin() {\n      return signedIn()\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';\n    }\n\n    match /users/{userId} {\n      allow create: if signedIn() && request.auth.uid == userId\n        && request.resource.data.uid == request.auth.uid\n        && request.resource.data.role == 'member'\n        && request.resource.data.status == 'pending'\n        && request.resource.data.currentTrainingPlanType == null;\n      allow read: if signedIn() && (request.auth.uid == userId || isActiveAdmin());\n      allow update: if (signedIn() && request.auth.uid == userId\n        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'email', 'updatedAt']))\n        || (isActiveAdmin() && request.auth.uid != userId\n          && resource.data.role == 'member'\n          && request.resource.data.role == 'member'\n          && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])\n            && request.resource.data.approvedBy == request.auth.uid)\n            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])));\n      allow delete: if false;\n    }\n\n    match /categories/{categoryId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /exercises/{exerciseId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlanTemplates/{templateId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlans/{planId} {\n      allow read: if isActiveAdmin();\n      allow create: if isActiveAdmin()\n        && request.resource.data.createdBy == request.auth.uid\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow update: if isActiveAdmin()\n        && request.resource.data.createdBy == resource.data.createdBy\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow delete: if false;\n\n      match /workoutDays/{dayId} {\n        allow read: if isActiveAdmin();\n        allow create, update: if isActiveAdmin()\n          && request.resource.data.order >= 1;\n        allow delete: if false;\n\n        match /exercises/{itemId} {\n          allow read: if isActiveAdmin();\n          allow create, update: if isActiveAdmin()\n            && request.resource.data.sets >= 1\n            && request.resource.data.reps >= 1\n            && request.resource.data.order >= 1\n            && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)\n            && (request.resource.data.restSeconds == null || request.resource.data.restSeconds >= 0);\n          allow delete: if false;\n        }\n      }\n    }\n  }\n}\n","name":"firestore.rules"}]},"createTime":"2026-08-04T13:01:22.535919Z","metadata":{"services":["cloud.firestore"]}}
+[debug] [2026-08-04T13:01:22.700Z] [rules] created ruleset projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b
+[debug] [2026-08-04T13:01:22.702Z] [rules] releasing cloud.firestore with ruleset projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b
+[debug] [2026-08-04T13:01:22.703Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:22.703Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:01:22.704Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore [none]
+[debug] [2026-08-04T13:01:22.704Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"release":{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b"}}
+[debug] [2026-08-04T13:01:24.194Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore 200
+[debug] [2026-08-04T13:01:24.196Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T13:01:24.016200Z"}
+[debug] [2026-08-04T13:01:24.197Z] [rules] updated release projects/fun-fitness-gym/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/fun-fitness-gym/overview
+[debug] [2026-08-04T13:06:38.583Z] ----------------------------------------------------------------------
+[debug] [2026-08-04T13:06:38.585Z] Command:       /home/manik-devops/.nvm/versions/node/v24.16.0/bin/node /home/manik-devops/.nvm/versions/node/v24.16.0/bin/firebase deploy --only firestore:rules
+[debug] [2026-08-04T13:06:38.586Z] CLI Version:   15.25.1
+[debug] [2026-08-04T13:06:38.586Z] Platform:      linux
+[debug] [2026-08-04T13:06:38.586Z] Node Version:  v24.16.0
+[debug] [2026-08-04T13:06:38.586Z] Detected Agent: codex_cli
+[debug] [2026-08-04T13:06:38.586Z] Time:          Tue Aug 04 2026 18:36:38 GMT+0530 (India Standard Time)
+[debug] [2026-08-04T13:06:38.586Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-08-04T13:06:39.108Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-08-04T13:06:39.108Z] > authorizing via signed-in user (maniksharma555.ms@gmail.com)
+[debug] [2026-08-04T13:06:39.108Z] [iam] checking project fun-fitness-gym for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-08-04T13:06:39.117Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:39.117Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:39.117Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions [none]
+[debug] [2026-08-04T13:06:39.118Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions  x-goog-user-project=fun-fitness-gym
+[debug] [2026-08-04T13:06:39.118Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-08-04T13:06:40.648Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions 200
+[debug] [2026-08-04T13:06:40.648Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'fun-fitness-gym'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-08-04T13:06:40.652Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:40.652Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:40.653Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) [none]
+[debug] [2026-08-04T13:06:40.831Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) 200
+[debug] [2026-08-04T13:06:40.832Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) {"name":"projects/fun-fitness-gym/databases/(default)","uid":"04483aad-6c0e-4e96-8ceb-bd7f5803aa6a","createTime":"2026-08-04T05:23:23.722147Z","updateTime":"2026-08-04T05:23:23.722147Z","locationId":"asia-south2","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-08-04T12:06:40.823249Z","appEngineIntegrationMode":"DISABLED","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IIiLlZuFh5YDMNCVn8XQhpYD"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-08-04T13:06:40.834Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:40.834Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:40.834Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [none]
+[debug] [2026-08-04T13:06:40.835Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [omitted]
+[debug] [2026-08-04T13:06:42.310Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test 200
+[debug] [2026-08-04T13:06:42.310Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-08-04T13:06:42.312Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:42.313Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:42.313Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases pageSize=10&pageToken=
+[debug] [2026-08-04T13:06:43.745Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases 200
+[debug] [2026-08-04T13:06:43.746Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases {"releases":[{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T13:01:24.016200Z"}]}
+[debug] [2026-08-04T13:06:43.748Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:43.748Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:43.749Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b [none]
+[debug] [2026-08-04T13:06:45.110Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b 200
+[debug] [2026-08-04T13:06:45.111Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/4b3b6be8-7339-4c96-a177-9df29466932b [omitted]
+[info] i  firestore: uploading rules firestore.rules... 
+[debug] [2026-08-04T13:06:45.113Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:45.114Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:45.115Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [none]
+[debug] [2026-08-04T13:06:45.115Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [omitted]
+[debug] [2026-08-04T13:06:46.552Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets 200
+[debug] [2026-08-04T13:06:46.553Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets {"name":"projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba","source":{"files":[{"content":"rules_version = '2';\n\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    function signedIn() { return request.auth != null; }\n    function isActiveAdmin() {\n      return signedIn()\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';\n    }\n\n    match /users/{userId} {\n      allow create: if signedIn() && request.auth.uid == userId\n        && request.resource.data.uid == request.auth.uid\n        && request.resource.data.role == 'member'\n        && request.resource.data.status == 'pending'\n        && request.resource.data.currentTrainingPlanType == null;\n      allow read: if signedIn() && (request.auth.uid == userId || isActiveAdmin());\n      allow update: if (signedIn() && request.auth.uid == userId\n        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'email', 'updatedAt']))\n        || (isActiveAdmin() && request.auth.uid != userId\n          && resource.data.role == 'member'\n          && request.resource.data.role == 'member'\n          && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])\n            && request.resource.data.approvedBy == request.auth.uid)\n            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])));\n      allow delete: if false;\n    }\n\n    match /categories/{categoryId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /exercises/{exerciseId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlanTemplates/{templateId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlans/{planId} {\n      allow read: if isActiveAdmin();\n      allow create: if isActiveAdmin()\n        && request.resource.data.createdBy == request.auth.uid\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow update: if isActiveAdmin()\n        && request.resource.data.createdBy == resource.data.createdBy\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow delete: if false;\n\n      match /workoutDays/{dayId} {\n        allow read: if isActiveAdmin();\n        allow create, update: if isActiveAdmin()\n          && request.resource.data.order >= 1;\n        allow delete: if false;\n\n        match /exercises/{itemId} {\n          allow read: if isActiveAdmin();\n          allow create, update: if isActiveAdmin()\n            && request.resource.data.sets >= 1\n            && request.resource.data.sets <= 20\n            && request.resource.data.reps >= 1\n            && request.resource.data.reps <= 100\n            && request.resource.data.displayOrder >= 1\n            && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)\n            && (request.resource.data.restSeconds == null\n              || (request.resource.data.restSeconds >= 0 && request.resource.data.restSeconds <= 600));\n          allow delete: if false;\n        }\n      }\n    }\n  }\n}\n","name":"firestore.rules"}]},"createTime":"2026-08-04T13:06:46.391903Z","metadata":{"services":["cloud.firestore"]}}
+[debug] [2026-08-04T13:06:46.553Z] [rules] created ruleset projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba
+[debug] [2026-08-04T13:06:46.554Z] [rules] releasing cloud.firestore with ruleset projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba
+[debug] [2026-08-04T13:06:46.555Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:46.555Z] Checked if tokens are valid: true, expires at: 1785850812398
+[debug] [2026-08-04T13:06:46.556Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore [none]
+[debug] [2026-08-04T13:06:46.556Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"release":{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba"}}
+[debug] [2026-08-04T13:06:48.043Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore 200
+[debug] [2026-08-04T13:06:48.043Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T13:06:47.871448Z"}
+[debug] [2026-08-04T13:06:48.043Z] [rules] updated release projects/fun-fitness-gym/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/fun-fitness-gym/overview
+[debug] [2026-08-04T13:27:07.536Z] ----------------------------------------------------------------------
+[debug] [2026-08-04T13:27:07.541Z] Command:       /home/manik-devops/.nvm/versions/node/v24.16.0/bin/node /home/manik-devops/.nvm/versions/node/v24.16.0/bin/firebase deploy --only firestore:rules
+[debug] [2026-08-04T13:27:07.542Z] CLI Version:   15.25.1
+[debug] [2026-08-04T13:27:07.542Z] Platform:      linux
+[debug] [2026-08-04T13:27:07.543Z] Node Version:  v24.16.0
+[debug] [2026-08-04T13:27:07.543Z] Detected Agent: codex_cli
+[debug] [2026-08-04T13:27:07.543Z] Time:          Tue Aug 04 2026 18:57:07 GMT+0530 (India Standard Time)
+[debug] [2026-08-04T13:27:07.543Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-08-04T13:27:08.475Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-08-04T13:27:08.475Z] > authorizing via signed-in user (maniksharma555.ms@gmail.com)
+[debug] [2026-08-04T13:27:08.475Z] [iam] checking project fun-fitness-gym for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-08-04T13:27:08.489Z] Checked if tokens are valid: false, expires at: 1785850812398
+[debug] [2026-08-04T13:27:08.490Z] Checked if tokens are valid: false, expires at: 1785850812398
+[debug] [2026-08-04T13:27:08.490Z] > refreshing access token with scopes: []
+[debug] [2026-08-04T13:27:08.493Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-08-04T13:27:08.493Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-08-04T13:27:08.964Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-08-04T13:27:08.965Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-08-04T13:27:08.975Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions [none]
+[debug] [2026-08-04T13:27:08.976Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions  x-goog-user-project=fun-fitness-gym
+[debug] [2026-08-04T13:27:08.976Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-08-04T13:27:10.844Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions 200
+[debug] [2026-08-04T13:27:10.845Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'fun-fitness-gym'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-08-04T13:27:10.854Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:10.854Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:10.855Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) [none]
+[debug] [2026-08-04T13:27:11.754Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) 200
+[debug] [2026-08-04T13:27:11.754Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) {"name":"projects/fun-fitness-gym/databases/(default)","uid":"04483aad-6c0e-4e96-8ceb-bd7f5803aa6a","createTime":"2026-08-04T05:23:23.722147Z","updateTime":"2026-08-04T05:23:23.722147Z","locationId":"asia-south2","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-08-04T12:27:11.662599Z","appEngineIntegrationMode":"DISABLED","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IOfGieaJh5YDMNCVn8XQhpYD"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-08-04T13:27:11.757Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:11.757Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:11.757Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [none]
+[debug] [2026-08-04T13:27:11.758Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [omitted]
+[debug] [2026-08-04T13:27:13.636Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test 200
+[debug] [2026-08-04T13:27:13.637Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-08-04T13:27:13.639Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:13.640Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:13.640Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases pageSize=10&pageToken=
+[debug] [2026-08-04T13:27:14.983Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases 200
+[debug] [2026-08-04T13:27:14.983Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases {"releases":[{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T13:06:47.871448Z"}]}
+[debug] [2026-08-04T13:27:14.984Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:14.985Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:14.985Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba [none]
+[debug] [2026-08-04T13:27:16.379Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba 200
+[debug] [2026-08-04T13:27:16.379Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/2a462403-afe8-4c92-94c9-c7374afdfaba [omitted]
+[info] i  firestore: uploading rules firestore.rules... 
+[debug] [2026-08-04T13:27:16.381Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:16.381Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:16.382Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [none]
+[debug] [2026-08-04T13:27:16.382Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [omitted]
+[debug] [2026-08-04T13:27:17.943Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets 200
+[debug] [2026-08-04T13:27:17.944Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets {"name":"projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547","source":{"files":[{"content":"rules_version = '2';\n\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    function signedIn() { return request.auth != null; }\n    function isActiveAdmin() {\n      return signedIn()\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';\n    }\n\n    match /users/{userId} {\n      allow create: if signedIn() && request.auth.uid == userId\n        && request.resource.data.uid == request.auth.uid\n        && request.resource.data.role == 'member'\n        && request.resource.data.status == 'pending'\n        && request.resource.data.currentTrainingPlanType == null;\n      allow read: if signedIn() && (request.auth.uid == userId || isActiveAdmin());\n      allow update: if (signedIn() && request.auth.uid == userId\n        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'email', 'updatedAt']))\n        || (isActiveAdmin() && request.auth.uid != userId\n          && resource.data.role == 'member'\n          && request.resource.data.role == 'member'\n          && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])\n            && request.resource.data.approvedBy == request.auth.uid)\n            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])));\n      allow delete: if false;\n    }\n\n    match /categories/{categoryId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /exercises/{exerciseId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlanTemplates/{templateId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlans/{planId} {\n      allow read: if isActiveAdmin();\n      allow create: if isActiveAdmin()\n        && request.resource.data.createdBy == request.auth.uid\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow update: if isActiveAdmin()\n        && request.resource.data.createdBy == resource.data.createdBy\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow delete: if false;\n\n      match /workoutDays/{dayId} {\n        allow read: if isActiveAdmin();\n        allow create, update: if isActiveAdmin()\n          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true\n          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'\n          && request.resource.data.order >= 1;\n        allow delete: if false;\n\n        match /exercises/{itemId} {\n          allow read: if isActiveAdmin();\n          allow create, update: if isActiveAdmin()\n            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true\n            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'\n            && request.resource.data.sets >= 1\n            && request.resource.data.sets <= 20\n            && request.resource.data.reps >= 1\n            && request.resource.data.reps <= 100\n            && request.resource.data.displayOrder >= 1\n            && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)\n            && (request.resource.data.restSeconds == null\n              || (request.resource.data.restSeconds >= 0 && request.resource.data.restSeconds <= 600));\n          allow delete: if false;\n        }\n      }\n    }\n  }\n}\n","name":"firestore.rules"}]},"createTime":"2026-08-04T13:27:17.771663Z","metadata":{"services":["cloud.firestore"]}}
+[debug] [2026-08-04T13:27:17.944Z] [rules] created ruleset projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547
+[debug] [2026-08-04T13:27:17.945Z] [rules] releasing cloud.firestore with ruleset projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547
+[debug] [2026-08-04T13:27:17.946Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:17.947Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:27:17.947Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore [none]
+[debug] [2026-08-04T13:27:17.947Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"release":{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547"}}
+[debug] [2026-08-04T13:27:19.422Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore 200
+[debug] [2026-08-04T13:27:19.422Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T13:27:19.257314Z"}
+[debug] [2026-08-04T13:27:19.422Z] [rules] updated release projects/fun-fitness-gym/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/fun-fitness-gym/overview
+[debug] [2026-08-04T13:41:51.159Z] ----------------------------------------------------------------------
+[debug] [2026-08-04T13:41:51.162Z] Command:       /home/manik-devops/.nvm/versions/node/v24.16.0/bin/node /home/manik-devops/.nvm/versions/node/v24.16.0/bin/firebase deploy --only firestore:rules
+[debug] [2026-08-04T13:41:51.162Z] CLI Version:   15.25.1
+[debug] [2026-08-04T13:41:51.162Z] Platform:      linux
+[debug] [2026-08-04T13:41:51.162Z] Node Version:  v24.16.0
+[debug] [2026-08-04T13:41:51.162Z] Detected Agent: codex_cli
+[debug] [2026-08-04T13:41:51.163Z] Time:          Tue Aug 04 2026 19:11:51 GMT+0530 (India Standard Time)
+[debug] [2026-08-04T13:41:51.163Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-08-04T13:41:52.123Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-08-04T13:41:52.124Z] > authorizing via signed-in user (maniksharma555.ms@gmail.com)
+[debug] [2026-08-04T13:41:52.124Z] [iam] checking project fun-fitness-gym for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-08-04T13:41:52.140Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:52.140Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:52.141Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions [none]
+[debug] [2026-08-04T13:41:52.141Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions  x-goog-user-project=fun-fitness-gym
+[debug] [2026-08-04T13:41:52.142Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-08-04T13:41:53.688Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions 200
+[debug] [2026-08-04T13:41:53.689Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fun-fitness-gym:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'fun-fitness-gym'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-08-04T13:41:53.699Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:53.699Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:53.700Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) [none]
+[debug] [2026-08-04T13:41:54.602Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) 200
+[debug] [2026-08-04T13:41:54.602Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fun-fitness-gym/databases/(default) {"name":"projects/fun-fitness-gym/databases/(default)","uid":"04483aad-6c0e-4e96-8ceb-bd7f5803aa6a","createTime":"2026-08-04T05:23:23.722147Z","updateTime":"2026-08-04T05:23:23.722147Z","locationId":"asia-south2","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-08-04T12:41:54.507833Z","appEngineIntegrationMode":"DISABLED","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IN6ThouNh5YDMNCVn8XQhpYD"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-08-04T13:41:54.604Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:54.605Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:54.605Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [none]
+[debug] [2026-08-04T13:41:54.605Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test [omitted]
+[debug] [2026-08-04T13:41:56.237Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test 200
+[debug] [2026-08-04T13:41:56.238Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-08-04T13:41:56.241Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:56.241Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:56.242Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases pageSize=10&pageToken=
+[debug] [2026-08-04T13:41:57.620Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases 200
+[debug] [2026-08-04T13:41:57.621Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases {"releases":[{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T13:27:19.257314Z"}]}
+[debug] [2026-08-04T13:41:57.622Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:57.622Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:57.622Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547 [none]
+[debug] [2026-08-04T13:41:59.044Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547 200
+[debug] [2026-08-04T13:41:59.045Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets/5d940962-cd76-43e3-ad1d-6932dddd2547 [omitted]
+[info] i  firestore: uploading rules firestore.rules... 
+[debug] [2026-08-04T13:41:59.047Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:59.047Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:59.047Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [none]
+[debug] [2026-08-04T13:41:59.047Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets [omitted]
+[debug] [2026-08-04T13:41:59.719Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets 200
+[debug] [2026-08-04T13:41:59.719Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/rulesets {"name":"projects/fun-fitness-gym/rulesets/c642ff32-bbb2-48e8-86e3-9fef07a9578a","source":{"files":[{"content":"rules_version = '2';\n\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    function signedIn() { return request.auth != null; }\n    function isActiveAdmin() {\n      return signedIn()\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'\n        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';\n    }\n    function isPublishedActivePlan(planId) {\n      return get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status == 'published'\n        && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true;\n    }\n\n    match /users/{userId} {\n      allow create: if signedIn() && request.auth.uid == userId\n        && request.resource.data.uid == request.auth.uid\n        && request.resource.data.role == 'member'\n        && request.resource.data.status == 'pending'\n        && request.resource.data.currentTrainingPlanType == null;\n      allow read: if signedIn() && (request.auth.uid == userId || isActiveAdmin());\n      allow update: if (signedIn() && request.auth.uid == userId\n        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'email', 'updatedAt']))\n        || (isActiveAdmin() && request.auth.uid != userId\n          && resource.data.role == 'member'\n          && request.resource.data.role == 'member'\n          && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])\n            && request.resource.data.approvedBy == request.auth.uid)\n            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])\n            || (resource.data.status == 'active'\n              && request.resource.data.status == 'active'\n              && request.resource.data.diff(resource.data).affectedKeys().hasOnly([\n                'assignedTrainingPlanId',\n                'assignedTrainingPlanNameSnapshot',\n                'assignedTrainingPlanType',\n                'assignedAt',\n                'assignedBy',\n                'updatedAt'\n              ])\n              && ((request.resource.data.assignedTrainingPlanId == null\n                && request.resource.data.assignedTrainingPlanNameSnapshot == null\n                && request.resource.data.assignedTrainingPlanType == null\n                && request.resource.data.assignedAt == null\n                && request.resource.data.assignedBy == null)\n                || (request.resource.data.assignedTrainingPlanId != null\n                  && isPublishedActivePlan(request.resource.data.assignedTrainingPlanId)\n                  && request.resource.data.assignedTrainingPlanNameSnapshot\n                    == get(/databases/$(database)/documents/trainingPlans/$(request.resource.data.assignedTrainingPlanId)).data.name\n                  && request.resource.data.assignedTrainingPlanType\n                    == get(/databases/$(database)/documents/trainingPlans/$(request.resource.data.assignedTrainingPlanId)).data.trainingPlanType\n                  && request.resource.data.assignedAt == request.time\n                  && request.resource.data.assignedBy == request.auth.uid)))));\n      allow delete: if false;\n    }\n\n    match /memberTrainingAssignments/{assignmentId} {\n      allow read: if isActiveAdmin()\n        || (signedIn() && resource.data.memberId == request.auth.uid);\n      allow create: if isActiveAdmin()\n        && request.resource.data.memberId != request.auth.uid\n        && request.resource.data.assignedBy == request.auth.uid\n        && request.resource.data.timestamp == request.time\n        && get(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.role == 'member'\n        && get(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.status == 'active'\n        && request.resource.data.newPlanId\n          == getAfter(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.assignedTrainingPlanId\n        && (request.resource.data.newPlanId == null\n          || isPublishedActivePlan(request.resource.data.newPlanId));\n      allow update, delete: if false;\n    }\n\n    match /categories/{categoryId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /exercises/{exerciseId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlanTemplates/{templateId} {\n      allow read, create, update: if isActiveAdmin();\n      allow delete: if false;\n    }\n\n    match /trainingPlans/{planId} {\n      allow read: if isActiveAdmin();\n      allow create: if isActiveAdmin()\n        && request.resource.data.createdBy == request.auth.uid\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow update: if isActiveAdmin()\n        && request.resource.data.createdBy == resource.data.createdBy\n        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']\n        && request.resource.data.status in ['draft', 'published', 'archived'];\n      allow delete: if false;\n\n      match /workoutDays/{dayId} {\n        allow read: if isActiveAdmin();\n        allow create, update: if isActiveAdmin()\n          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true\n          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'\n          && request.resource.data.order >= 1;\n        allow delete: if false;\n\n        match /exercises/{itemId} {\n          allow read: if isActiveAdmin();\n          allow create, update: if isActiveAdmin()\n            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true\n            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'\n            && request.resource.data.sets >= 1\n            && request.resource.data.sets <= 20\n            && request.resource.data.reps >= 1\n            && request.resource.data.reps <= 100\n            && request.resource.data.displayOrder >= 1\n            && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)\n            && (request.resource.data.restSeconds == null\n              || (request.resource.data.restSeconds >= 0 && request.resource.data.restSeconds <= 600));\n          allow delete: if false;\n        }\n      }\n    }\n  }\n}\n","name":"firestore.rules"}]},"createTime":"2026-08-04T13:41:59.524863Z","metadata":{"services":["cloud.firestore"]}}
+[debug] [2026-08-04T13:41:59.720Z] [rules] created ruleset projects/fun-fitness-gym/rulesets/c642ff32-bbb2-48e8-86e3-9fef07a9578a
+[debug] [2026-08-04T13:41:59.721Z] [rules] releasing cloud.firestore with ruleset projects/fun-fitness-gym/rulesets/c642ff32-bbb2-48e8-86e3-9fef07a9578a
+[debug] [2026-08-04T13:41:59.723Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:59.723Z] Checked if tokens are valid: true, expires at: 1785853627965
+[debug] [2026-08-04T13:41:59.724Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore [none]
+[debug] [2026-08-04T13:41:59.724Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"release":{"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/c642ff32-bbb2-48e8-86e3-9fef07a9578a"}}
+[debug] [2026-08-04T13:42:01.289Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore 200
+[debug] [2026-08-04T13:42:01.289Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/fun-fitness-gym/releases/cloud.firestore {"name":"projects/fun-fitness-gym/releases/cloud.firestore","rulesetName":"projects/fun-fitness-gym/rulesets/c642ff32-bbb2-48e8-86e3-9fef07a9578a","createTime":"2026-08-04T05:23:29.781906Z","updateTime":"2026-08-04T13:42:01.117601Z"}
+[debug] [2026-08-04T13:42:01.290Z] [rules] updated release projects/fun-fitness-gym/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/fun-fitness-gym/overview

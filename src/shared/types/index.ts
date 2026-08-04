@@ -4,6 +4,7 @@ export type {
   UserProfile,
   UserRole,
   UserStatus,
+  TrainingPlanAssignmentInput,
 } from './user';
 export type { Category, CategoryInput } from './category';
 export type { Exercise, ExerciseInput } from './exercise';
