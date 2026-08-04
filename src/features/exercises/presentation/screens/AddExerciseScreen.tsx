@@ -58,6 +58,18 @@ export function AddExerciseScreen() {
       <View className="px-6 py-8">
         <Text className="text-3xl font-bold text-slate-900">Add exercise</Text>
         <View className="mt-6 gap-5">
+          <Pressable
+            onPress={() => setPicker(true)}
+            className="rounded-2xl border border-slate-200 bg-white p-4"
+          >
+            <Text className="text-sm font-semibold text-slate-700">Category</Text>
+            <Text className="mt-1 text-slate-500">
+              {categoryName || 'Select category'}
+            </Text>
+          </Pressable>
+          {errors.categoryId ? (
+            <Text className="text-sm text-red-600">{errors.categoryId.message}</Text>
+          ) : null}
           <Controller
             control={control}
             name="name"
@@ -71,18 +83,6 @@ export function AddExerciseScreen() {
               />
             )}
           />
-          <Pressable
-            onPress={() => setPicker(true)}
-            className="rounded-2xl border border-slate-200 bg-white p-4"
-          >
-            <Text className="text-sm font-semibold text-slate-700">Category</Text>
-            <Text className="mt-1 text-slate-500">
-              {categoryName || 'Select category'}
-            </Text>
-          </Pressable>
-          {errors.categoryId ? (
-            <Text className="text-sm text-red-600">{errors.categoryId.message}</Text>
-          ) : null}
         </View>
         <View className="mt-8">
           <PrimaryButton
@@ -92,8 +92,18 @@ export function AddExerciseScreen() {
           />
         </View>
       </View>
-      <Modal visible={picker} transparent animationType="slide">
+      <Modal
+        visible={picker}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setPicker(false)}
+      >
         <View className="flex-1 justify-end bg-black/40">
+          <Pressable
+            accessibilityLabel="Close category selector"
+            className="absolute inset-0"
+            onPress={() => setPicker(false)}
+          />
           <View className="max-h-[70%] rounded-t-3xl bg-white p-6">
             <Text className="text-xl font-bold">Select category</Text>
             <ScrollView className="mt-4">

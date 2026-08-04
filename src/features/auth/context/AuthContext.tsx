@@ -90,6 +90,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
         email: credential.user.email ?? email.trim(),
         role: 'member' as const,
         status: 'pending' as const,
+        currentTrainingPlanType: null,
       };
 
       try {

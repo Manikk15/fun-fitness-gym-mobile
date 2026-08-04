@@ -112,8 +112,18 @@ export function EditExerciseScreen() {
           />
         </View>
       </View>
-      <Modal visible={picker} transparent animationType="slide">
+      <Modal
+        visible={picker}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setPicker(false)}
+      >
         <View className="flex-1 justify-end bg-black/40">
+          <Pressable
+            accessibilityLabel="Close category selector"
+            className="absolute inset-0"
+            onPress={() => setPicker(false)}
+          />
           <View className="max-h-[70%] rounded-t-3xl bg-white p-6">
             <Text className="text-xl font-bold">Select category</Text>
             <ScrollView className="mt-4">

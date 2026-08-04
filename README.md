@@ -84,3 +84,17 @@ existing test user's `status` manually in Firestore (for example, `active`) and
 promote the first administrator manually with `role: "admin"` and `status:
 "active"`. Publish [firestore.rules](./firestore.rules) before testing member
 approval or admin management.
+
+## Training plan model
+
+Training plans are assigned only by an active admin through
+`currentTrainingPlanType`. The supported types are `compound_full_body`,
+`two_muscle_split`, and `single_muscle_split`. Template names and workout items
+are admin-configured Firestore data; the app does not automatically progress a
+member between plans based on time.
+
+Deploy Firestore rules after reviewing them:
+
+```bash
+firebase deploy --only firestore:rules
+```

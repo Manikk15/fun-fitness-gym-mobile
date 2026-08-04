@@ -18,6 +18,7 @@ import type {
   CreateUserProfileInput,
   UpdateUserProfileInput,
   UserProfile,
+  TrainingPlanType,
 } from '../../types';
 import { firestore } from '../firebase';
 
@@ -35,6 +36,11 @@ export interface UserService {
   setMemberStatus(
     memberId: string,
     status: 'active' | 'rejected' | 'inactive',
+    adminId: string,
+  ): Promise<void>;
+  setTrainingPlan(
+    memberId: string,
+    planType: TrainingPlanType,
     adminId: string,
   ): Promise<void>;
 }
@@ -98,6 +104,17 @@ export const userService: UserService = {
       status,
       approvedBy: adminId,
       approvedAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    });
+  },
+
+  async setTrainingPlan(memberId, planType, adminId) {
+    if (memberId === adminId) {
+      throw new Error('Admins cannot assign themselves through the member service.');
+    }
+
+    await updateDoc(userDocument(memberId), {
+      currentTrainingPlanType: planType,
       updatedAt: serverTimestamp(),
     });
   },

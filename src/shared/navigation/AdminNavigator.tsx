@@ -10,10 +10,17 @@ import { EditCategoryScreen } from '../../features/categories/presentation/scree
 import { ExerciseListScreen } from '../../features/exercises/presentation/screens/ExerciseListScreen';
 import { AddExerciseScreen } from '../../features/exercises/presentation/screens/AddExerciseScreen';
 import { EditExerciseScreen } from '../../features/exercises/presentation/screens/EditExerciseScreen';
-import type { AdminTabParamList, ExerciseStackParamList } from './admin-types';
+import { TrainingPlanListScreen } from '../../features/trainingPlans/presentation/screens/TrainingPlanListScreen';
+import { CreateTrainingPlanScreen } from '../../features/trainingPlans/presentation/screens/CreateTrainingPlanScreen';
+import type {
+  AdminTabParamList,
+  ExerciseStackParamList,
+  TrainingPlanStackParamList,
+} from './admin-types';
 
 const Tabs = createBottomTabNavigator<AdminTabParamList>();
 const ExerciseStack = createNativeStackNavigator<ExerciseStackParamList>();
+const TrainingPlanStack = createNativeStackNavigator<TrainingPlanStackParamList>();
 
 function ExerciseNavigator() {
   return (
@@ -52,9 +59,27 @@ function ExerciseNavigator() {
   );
 }
 
+function TrainingPlanNavigator() {
+  return (
+    <TrainingPlanStack.Navigator>
+      <TrainingPlanStack.Screen
+        name="TrainingPlanList"
+        component={TrainingPlanListScreen}
+        options={{ title: 'Training Plans' }}
+      />
+      <TrainingPlanStack.Screen
+        name="CreateTrainingPlan"
+        component={CreateTrainingPlanScreen}
+        options={{ title: 'Add Training Plan' }}
+      />
+    </TrainingPlanStack.Navigator>
+  );
+}
+
 const icons: Record<keyof AdminTabParamList, keyof typeof Ionicons.glyphMap> = {
   Home: 'home-outline',
   Exercises: 'barbell-outline',
+  Plans: 'clipboard-outline',
   Members: 'people-outline',
   Profile: 'person-outline',
 };
@@ -75,6 +100,7 @@ export function AdminNavigator() {
         component={ExerciseNavigator}
         options={{ title: 'Exercises' }}
       />
+      <Tabs.Screen name="Plans" component={TrainingPlanNavigator} />
       <Tabs.Screen name="Members" component={MembersListScreen} />
       <Tabs.Screen name="Profile" component={AdminProfileScreen} />
     </Tabs.Navigator>

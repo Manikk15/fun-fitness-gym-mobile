@@ -13,15 +13,17 @@ service cloud.firestore {
       allow create: if signedIn() && request.auth.uid == userId
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.role == 'member'
-        && request.resource.data.status == 'pending';
+        && request.resource.data.status == 'pending'
+        && request.resource.data.currentTrainingPlanType == null;
       allow read: if signedIn() && (request.auth.uid == userId || isActiveAdmin());
       allow update: if (signedIn() && request.auth.uid == userId
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'email', 'updatedAt']))
         || (isActiveAdmin() && request.auth.uid != userId
           && resource.data.role == 'member'
           && request.resource.data.role == 'member'
-          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])
-          && request.resource.data.approvedBy == request.auth.uid);
+          && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])
+            && request.resource.data.approvedBy == request.auth.uid)
+            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])));
       allow delete: if false;
     }
 
@@ -33,6 +35,40 @@ service cloud.firestore {
     match /exercises/{exerciseId} {
       allow read, create, update: if isActiveAdmin();
       allow delete: if false;
+    }
+
+    match /trainingPlanTemplates/{templateId} {
+      allow read, create, update: if isActiveAdmin();
+      allow delete: if false;
+    }
+
+    match /trainingPlans/{planId} {
+      allow read: if isActiveAdmin();
+      allow create: if isActiveAdmin()
+        && request.resource.data.createdBy == request.auth.uid
+        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']
+        && request.resource.data.status in ['draft', 'published', 'archived'];
+      allow update: if isActiveAdmin()
+        && request.resource.data.createdBy == resource.data.createdBy
+        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']
+        && request.resource.data.status in ['draft', 'published', 'archived'];
+      allow delete: if false;
+
+      match /workoutDays/{dayId} {
+        allow read, create, update: if isActiveAdmin()
+          && request.resource.data.order >= 1;
+        allow delete: if false;
+
+        match /exercises/{itemId} {
+          allow read, create, update: if isActiveAdmin()
+            && request.resource.data.sets >= 1
+            && request.resource.data.reps >= 1
+            && request.resource.data.order >= 1
+            && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)
+            && (request.resource.data.restSeconds == null || request.resource.data.restSeconds >= 0);
+          allow delete: if false;
+        }
+      }
     }
   }
 }
