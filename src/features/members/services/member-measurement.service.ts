@@ -35,6 +35,17 @@ export const memberMeasurementService = {
     );
     return snapshot.docs.map((item) => map(item.id, item.data()));
   },
+  async listForMember(memberId: string): Promise<MemberMeasurement[]> {
+    const snapshot = await getDocs(
+      query(
+        reference,
+        where('memberId', '==', memberId),
+        orderBy('measuredAt', 'desc'),
+        limit(50),
+      ),
+    );
+    return snapshot.docs.map((item) => map(item.id, item.data()));
+  },
   async get(id: string): Promise<MemberMeasurement | null> {
     const snapshot = await getDoc(doc(reference, id));
     return snapshot.exists() ? map(snapshot.id, snapshot.data()) : null;
