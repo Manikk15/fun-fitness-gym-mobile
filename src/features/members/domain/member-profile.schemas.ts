@@ -25,12 +25,11 @@ const date = z
 
 export const memberProfileSchema = z.object({
   phone,
-  dateOfBirth: date,
   age: optionalNumber('age', 120).refine(
     (value) => !value || Number.isInteger(Number(value)),
     'Enter age as a whole number.',
   ),
-  gender: z.string().trim().max(30),
+  gender: z.enum(['', 'Male', 'Female']),
   heightCm: optionalNumber('height', 300),
   currentWeightKg: optionalNumber('weight', 500),
   goal: z.enum([

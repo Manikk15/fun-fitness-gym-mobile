@@ -17,9 +17,8 @@ export type UserProfile = {
   approvedBy?: string;
   approvedAt?: Timestamp | null;
   phone?: string;
-  dateOfBirth?: Timestamp | null;
   age?: number;
-  gender?: string;
+  gender?: 'Male' | 'Female';
   heightCm?: number;
   currentWeightKg?: number;
   goal?: MemberGoal;
@@ -40,7 +39,6 @@ export type AdminMemberProfileInput = Partial<
   Pick<
     UserProfile,
     | 'phone'
-    | 'dateOfBirth'
     | 'age'
     | 'gender'
     | 'heightCm'

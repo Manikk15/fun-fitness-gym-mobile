@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Alert, Pressable, Text, View } from 'react-native';
+import { Alert, Platform, Pressable, Text, View } from 'react-native';
+import DateTimePicker, {
+  type DateTimePickerEvent,
+} from '@react-native-community/datetimepicker';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
@@ -32,6 +35,77 @@ const dateValue = (value?: Timestamp | null) =>
   value ? value.toDate().toISOString().slice(0, 10) : '';
 const timestamp = (value: string) =>
   value ? Timestamp.fromDate(new Date(`${value}T00:00:00`)) : undefined;
+const localDateValue = (value: Date) =>
+  `${value.getFullYear()}-${String(value.getMonth() + 1).padStart(2, '0')}-${String(value.getDate()).padStart(2, '0')}`;
+const displayDate = (value: string) =>
+  value
+    ? new Date(`${value}T00:00:00`).toLocaleDateString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+      })
+    : 'Select date';
+
+function DatePickerField({
+  label,
+  value,
+  maximumDate,
+  error,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  maximumDate?: Date;
+  error?: string;
+  onChange: (value: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const selectedDate = value ? new Date(`${value}T00:00:00`) : new Date();
+  const choose = (event: DateTimePickerEvent, date?: Date) => {
+    if (Platform.OS === 'android') setOpen(false);
+    if (event.type === 'set' && date) onChange(localDateValue(date));
+  };
+  return (
+    <View>
+      <Text className="mb-2 text-sm font-semibold text-slate-700">{label}</Text>
+      <Pressable
+        className={`min-h-14 flex-row items-center justify-between rounded-2xl border bg-white px-4 ${error ? 'border-red-500' : 'border-slate-200'}`}
+        onPress={() => setOpen(true)}
+      >
+        <Text
+          className={value ? 'text-base text-slate-900' : 'text-base text-slate-400'}
+        >
+          {displayDate(value)}
+        </Text>
+        <Text className="font-semibold text-brand-700">Calendar</Text>
+      </Pressable>
+      {value ? (
+        <Pressable className="mt-2 self-start" onPress={() => onChange('')}>
+          <Text className="font-semibold text-brand-700">Clear date</Text>
+        </Pressable>
+      ) : null}
+      {error ? <Text className="mt-1.5 text-sm text-red-600">{error}</Text> : null}
+      {open ? (
+        <View className="mt-2 rounded-2xl bg-white p-2">
+          <DateTimePicker
+            value={selectedDate}
+            mode="date"
+            display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+            maximumDate={maximumDate}
+            onChange={choose}
+          />
+          {Platform.OS === 'ios' ? (
+            <PrimaryButton
+              label="Done"
+              variant="ghost"
+              onPress={() => setOpen(false)}
+            />
+          ) : null}
+        </View>
+      ) : null}
+    </View>
+  );
+}
 
 export function EditMemberProfileScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<MemberStackParamList>>();
@@ -48,7 +122,6 @@ export function EditMemberProfileScreen() {
     resolver: zodResolver(memberProfileSchema),
     defaultValues: {
       phone: '',
-      dateOfBirth: '',
       age: '',
       gender: '',
       heightCm: '',
@@ -62,6 +135,7 @@ export function EditMemberProfileScreen() {
     },
   });
   const goal = useWatch({ control, name: 'goal' });
+  const gender = useWatch({ control, name: 'gender' });
   useFocusEffect(
     useCallback(() => {
       void userService
@@ -70,7 +144,6 @@ export function EditMemberProfileScreen() {
           if (!member) return;
           reset({
             phone: member.phone ?? '',
-            dateOfBirth: dateValue(member.dateOfBirth),
             age: member.age ? String(member.age) : '',
             gender: member.gender ?? '',
             heightCm: member.heightCm ? String(member.heightCm) : '',
@@ -109,7 +182,6 @@ export function EditMemberProfileScreen() {
     const number = (value: string) => (value ? Number(value) : undefined);
     const input: AdminMemberProfileInput = {
       phone: values.phone || undefined,
-      dateOfBirth: timestamp(values.dateOfBirth),
       age: number(values.age),
       gender: values.gender || undefined,
       heightCm: number(values.heightCm),
@@ -126,8 +198,11 @@ export function EditMemberProfileScreen() {
       reset(values);
       showToast({ type: 'success', message: 'Profile updated.' });
       navigation.goBack();
-    } catch {
-      showToast({ type: 'error', message: 'Unable to update profile.' });
+    } catch (error) {
+      const detail =
+        error instanceof Error ? error.message : 'An unknown Firestore error occurred.';
+      console.error('Member profile update failed:', error);
+      showToast({ type: 'error', message: `Unable to update profile: ${detail}` });
     }
   };
   const fields: {
@@ -137,16 +212,13 @@ export function EditMemberProfileScreen() {
     multiline?: boolean;
   }[] = [
     { name: 'phone', label: 'Phone', keyboardType: 'phone-pad' },
-    { name: 'dateOfBirth', label: 'Date of Birth (YYYY-MM-DD)' },
     { name: 'age', label: 'Age', keyboardType: 'number-pad' },
-    { name: 'gender', label: 'Gender' },
     { name: 'heightCm', label: 'Height (cm)', keyboardType: 'decimal-pad' },
     {
       name: 'currentWeightKg',
       label: 'Current Weight (kg)',
       keyboardType: 'decimal-pad',
     },
-    { name: 'joiningDate', label: 'Joining Date (YYYY-MM-DD)' },
     { name: 'emergencyContactName', label: 'Emergency Contact Name' },
     {
       name: 'emergencyContactPhone',
@@ -166,7 +238,7 @@ export function EditMemberProfileScreen() {
     <ScreenContainer scroll>
       <View className="gap-5 px-6 py-8">
         <Text className="text-3xl font-bold text-slate-900">Edit Profile</Text>
-        {fields.slice(0, 6).map((item) => (
+        {fields.slice(0, 4).map((item) => (
           <Controller
             key={item.name}
             control={control}
@@ -184,6 +256,26 @@ export function EditMemberProfileScreen() {
             )}
           />
         ))}
+        <Text className="font-semibold text-slate-700">Gender</Text>
+        <View className="flex-row gap-2">
+          {(['Male', 'Female'] as const).map((item) => (
+            <Pressable
+              key={item}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: gender === item }}
+              onPress={() =>
+                setValue('gender', item, { shouldDirty: true, shouldValidate: true })
+              }
+            >
+              <Text
+                className={`rounded-full px-5 py-2 ${gender === item ? 'bg-brand-600 text-white' : 'bg-slate-200 text-slate-700'}`}
+              >
+                {gender === item ? '● ' : '○ '}
+                {item}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
         <Text className="font-semibold text-slate-700">Goal</Text>
         <View className="flex-row flex-wrap gap-2">
           {goals.map((item) => (
@@ -199,7 +291,24 @@ export function EditMemberProfileScreen() {
             </Pressable>
           ))}
         </View>
-        {fields.slice(6).map((item) => (
+        <Controller
+          control={control}
+          name="joiningDate"
+          render={({ field }) => (
+            <DatePickerField
+              label="Joining Date"
+              value={field.value}
+              error={errors.joiningDate?.message}
+              onChange={(value) =>
+                setValue('joiningDate', value, {
+                  shouldDirty: true,
+                  shouldValidate: true,
+                })
+              }
+            />
+          )}
+        />
+        {fields.slice(4).map((item) => (
           <Controller
             key={item.name}
             control={control}

@@ -8,10 +8,13 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
     }
+    function userGymId(data) {
+      return 'gymId' in data ? data.gymId : 'fun-fitness-gym';
+    }
     function currentGymId() {
-      return 'gymId' in get(/databases/$(database)/documents/users/$(request.auth.uid)).data
-        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.gymId
-        : 'fun-fitness-gym';
+      return userGymId(
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data
+      );
     }
     function isGymAdmin(gymId) {
       return isActiveAdmin() && currentGymId() == gymId;
@@ -51,12 +54,12 @@ service cloud.firestore {
           && request.resource.data.role == 'member'
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])
           && request.resource.data.approvedBy == request.auth.uid)
-        || (isGymAdmin(resource.data.gymId)
+        || (isGymAdmin(userGymId(resource.data))
           && resource.data.role == 'member'
           && request.resource.data.role == resource.data.role
-          && request.resource.data.gymId == resource.data.gymId
+          && userGymId(request.resource.data) == userGymId(resource.data)
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
-            'phone', 'dateOfBirth', 'age', 'gender', 'heightCm', 'currentWeightKg',
+            'phone', 'age', 'gender', 'heightCm', 'currentWeightKg',
             'goal', 'joiningDate', 'emergencyContactName', 'emergencyContactPhone',
             'address', 'notes', 'updatedAt'
           ]));

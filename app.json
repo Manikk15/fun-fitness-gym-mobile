@@ -14,7 +14,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#0B1220"
         }
-      ]
+      ],
+      "@react-native-community/datetimepicker"
     ],
     "ios": {
       "supportsTablet": true,
@@ -22,6 +23,7 @@
     },
     "android": {
       "package": "com.funfitnessgym.mobile",
+      "softwareKeyboardLayoutMode": "resize",
       "adaptiveIcon": {
         "backgroundColor": "#0B1220",
         "foregroundImage": "./assets/android-icon-foreground.png",
