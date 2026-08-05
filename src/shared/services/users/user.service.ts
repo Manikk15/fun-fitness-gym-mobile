@@ -1,12 +1,12 @@
 import {
   doc,
+  deleteField,
   getDocs,
   getDoc,
   onSnapshot,
   serverTimestamp,
   setDoc,
   updateDoc,
-  writeBatch,
   collection,
   query,
   where,
@@ -17,10 +17,9 @@ import {
 
 import type {
   CreateUserProfileInput,
+  AdminMemberProfileInput,
   UpdateUserProfileInput,
   UserProfile,
-  TrainingPlanType,
-  TrainingPlanAssignmentInput,
 } from '../../types';
 import { firestore } from '../firebase';
 
@@ -40,16 +39,7 @@ export interface UserService {
     status: 'active' | 'rejected' | 'inactive',
     adminId: string,
   ): Promise<void>;
-  setTrainingPlan(
-    memberId: string,
-    planType: TrainingPlanType,
-    adminId: string,
-  ): Promise<void>;
-  assignTrainingPlan(
-    memberId: string,
-    plan: TrainingPlanAssignmentInput | null,
-    adminId: string,
-  ): Promise<void>;
+  updateMemberProfile(memberId: string, data: AdminMemberProfileInput): Promise<void>;
 }
 
 function userDocument(userId: string) {
@@ -114,56 +104,16 @@ export const userService: UserService = {
       updatedAt: serverTimestamp(),
     });
   },
-
-  async setTrainingPlan(memberId, planType, adminId) {
-    if (memberId === adminId) {
-      throw new Error('Admins cannot assign themselves through the member service.');
-    }
-
+  async updateMemberProfile(memberId, data) {
+    const updates = Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [
+        key,
+        value === undefined ? deleteField() : value,
+      ]),
+    );
     await updateDoc(userDocument(memberId), {
-      currentTrainingPlanType: planType,
+      ...updates,
       updatedAt: serverTimestamp(),
     });
-  },
-
-  async assignTrainingPlan(memberId, plan, adminId) {
-    if (memberId === adminId) throw new Error('assignment/self');
-
-    const memberReference = userDocument(memberId);
-    const member = toUserProfile(await getDoc(memberReference));
-    if (!member || member.role !== 'member' || member.status !== 'active') {
-      throw new Error('assignment/member-not-active');
-    }
-
-    if (plan) {
-      const planSnapshot = await getDoc(doc(firestore, 'trainingPlans', plan.id));
-      const planData = planSnapshot.data();
-      if (
-        !planSnapshot.exists() ||
-        planData?.status !== 'published' ||
-        planData.active !== true
-      ) {
-        throw new Error('assignment/plan-not-published');
-      }
-    }
-
-    const historyReference = doc(collection(firestore, 'memberTrainingAssignments'));
-    const batch = writeBatch(firestore);
-    batch.update(memberReference, {
-      assignedTrainingPlanId: plan?.id ?? null,
-      assignedTrainingPlanNameSnapshot: plan?.name ?? null,
-      assignedTrainingPlanType: plan?.trainingPlanType ?? null,
-      assignedAt: plan ? serverTimestamp() : null,
-      assignedBy: plan ? adminId : null,
-      updatedAt: serverTimestamp(),
-    });
-    batch.set(historyReference, {
-      memberId,
-      previousPlanId: member.assignedTrainingPlanId ?? null,
-      newPlanId: plan?.id ?? null,
-      assignedBy: adminId,
-      timestamp: serverTimestamp(),
-    });
-    await batch.commit();
   },
 };

@@ -10,13 +10,9 @@ import {
   ScreenContainer,
 } from '../../../../shared/components';
 import type { AdminTabParamList } from '../../../../shared/navigation';
-import {
-  categoryService,
-  exerciseService,
-  userService,
-} from '../../../../shared/services';
+import { userService } from '../../../../shared/services';
 
-type DashboardData = { members: number; categories: number; exercises: number };
+type DashboardData = { members: number };
 
 export function AdminDashboard() {
   const navigation =
@@ -29,15 +25,9 @@ export function AdminDashboard() {
   const load = useCallback(async () => {
     setError(false);
     try {
-      const [members, categories, exercises] = await Promise.all([
-        userService.getMembers(),
-        categoryService.getAll(),
-        exerciseService.getAll(),
-      ]);
+      const members = await userService.getMembers();
       setData({
         members: members.filter((member) => member.status === 'active').length,
-        categories: categories.length,
-        exercises: exercises.filter((exercise) => exercise.active).length,
       });
     } catch {
       setError(true);
@@ -86,32 +76,17 @@ export function AdminDashboard() {
               />
             </View>
           ) : null}
-          <View className="mt-7 flex-row flex-wrap gap-3">
-            {[
-              ['Active members', data?.members ?? 0],
-              ['Categories', data?.categories ?? 0],
-              ['Active exercises', data?.exercises ?? 0],
-            ].map(([label, value]) => (
-              <View key={String(label)} className="w-[30%] rounded-2xl bg-white p-4">
-                <Text className="text-2xl font-bold text-slate-900">{value}</Text>
-                <Text className="mt-1 text-xs text-slate-500">{label}</Text>
-              </View>
-            ))}
+          <View className="mt-7 rounded-2xl bg-white p-4">
+            <Text className="text-2xl font-bold text-slate-900">
+              {data?.members ?? 0}
+            </Text>
+            <Text className="mt-1 text-xs text-slate-500">Active members</Text>
           </View>
           <Text className="mt-8 text-lg font-bold text-slate-900">Quick actions</Text>
           <View className="mt-3 gap-3">
             <PrimaryButton
-              label="Add Category"
-              onPress={() =>
-                navigation.navigate('Exercises', { screen: 'AddCategory' } as never)
-              }
-            />
-            <PrimaryButton
-              label="Add Exercise"
-              variant="secondary"
-              onPress={() =>
-                navigation.navigate('Exercises', { screen: 'AddExercise' } as never)
-              }
+              label="Manage Master Data"
+              onPress={() => navigation.navigate('MasterData')}
             />
             <PrimaryButton
               label="View Members"

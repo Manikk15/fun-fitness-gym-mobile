@@ -1,1 +1,1 @@
-export { APP_NAME, APP_TAGLINE } from './app';
+export { APP_NAME, APP_TAGLINE, DEFAULT_GYM_ID } from './app';

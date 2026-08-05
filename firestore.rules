@@ -8,119 +8,162 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
     }
-    function isPublishedActivePlan(planId) {
-      return get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status == 'published'
-        && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true;
+    function currentGymId() {
+      return 'gymId' in get(/databases/$(database)/documents/users/$(request.auth.uid)).data
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.gymId
+        : 'fun-fitness-gym';
     }
-
+    function isGymAdmin(gymId) {
+      return isActiveAdmin() && currentGymId() == gymId;
+    }
+    function isActiveGymTrainer(gymId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'trainer'
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active'
+        && currentGymId() == gymId;
+    }
+    function isActiveSelfMember(memberId) {
+      return signedIn()
+        && request.auth.uid == memberId
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'member'
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
+    }
+    function targetIsActiveMember(memberId, gymId) {
+      return get(/databases/$(database)/documents/users/$(memberId)).data.role == 'member'
+        && get(/databases/$(database)/documents/users/$(memberId)).data.status == 'active'
+        && ('gymId' in get(/databases/$(database)/documents/users/$(memberId)).data
+          ? get(/databases/$(database)/documents/users/$(memberId)).data.gymId
+          : 'fun-fitness-gym') == gymId;
+    }
+    function canReadMasterData(gymId, isActive) {
+      return isGymAdmin(gymId) || (isActiveGymTrainer(gymId) && isActive == true);
+    }
     match /users/{userId} {
       allow create: if signedIn() && request.auth.uid == userId
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.role == 'member'
-        && request.resource.data.status == 'pending'
-        && request.resource.data.currentTrainingPlanType == null;
+        && request.resource.data.status == 'pending';
       allow read: if signedIn() && (request.auth.uid == userId || isActiveAdmin());
       allow update: if (signedIn() && request.auth.uid == userId
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'email', 'updatedAt']))
         || (isActiveAdmin() && request.auth.uid != userId
           && resource.data.role == 'member'
           && request.resource.data.role == 'member'
-          && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])
-            && request.resource.data.approvedBy == request.auth.uid)
-            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentTrainingPlanType', 'updatedAt'])
-            || (resource.data.status == 'active'
-              && request.resource.data.status == 'active'
-              && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
-                'assignedTrainingPlanId',
-                'assignedTrainingPlanNameSnapshot',
-                'assignedTrainingPlanType',
-                'assignedAt',
-                'assignedBy',
-                'updatedAt'
-              ])
-              && ((request.resource.data.assignedTrainingPlanId == null
-                && request.resource.data.assignedTrainingPlanNameSnapshot == null
-                && request.resource.data.assignedTrainingPlanType == null
-                && request.resource.data.assignedAt == null
-                && request.resource.data.assignedBy == null)
-                || (request.resource.data.assignedTrainingPlanId != null
-                  && isPublishedActivePlan(request.resource.data.assignedTrainingPlanId)
-                  && request.resource.data.assignedTrainingPlanNameSnapshot
-                    == get(/databases/$(database)/documents/trainingPlans/$(request.resource.data.assignedTrainingPlanId)).data.name
-                  && request.resource.data.assignedTrainingPlanType
-                    == get(/databases/$(database)/documents/trainingPlans/$(request.resource.data.assignedTrainingPlanId)).data.trainingPlanType
-                  && request.resource.data.assignedAt == request.time
-                  && request.resource.data.assignedBy == request.auth.uid)))));
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedAt', 'updatedAt'])
+          && request.resource.data.approvedBy == request.auth.uid)
+        || (isGymAdmin(resource.data.gymId)
+          && resource.data.role == 'member'
+          && request.resource.data.role == resource.data.role
+          && request.resource.data.gymId == resource.data.gymId
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'phone', 'dateOfBirth', 'age', 'gender', 'heightCm', 'currentWeightKg',
+            'goal', 'joiningDate', 'emergencyContactName', 'emergencyContactPhone',
+            'address', 'notes', 'updatedAt'
+          ]));
       allow delete: if false;
     }
 
-    match /memberTrainingAssignments/{assignmentId} {
-      allow read: if isActiveAdmin()
-        || (signedIn() && resource.data.memberId == request.auth.uid);
-      allow create: if isActiveAdmin()
-        && request.resource.data.memberId != request.auth.uid
-        && request.resource.data.assignedBy == request.auth.uid
-        && request.resource.data.timestamp == request.time
-        && get(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.role == 'member'
-        && get(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.status == 'active'
-        && request.resource.data.newPlanId
-          == getAfter(/databases/$(database)/documents/users/$(request.resource.data.memberId)).data.assignedTrainingPlanId
-        && (request.resource.data.newPlanId == null
-          || isPublishedActivePlan(request.resource.data.newPlanId));
-      allow update, delete: if false;
-    }
-
-    match /categories/{categoryId} {
-      allow read, create, update: if isActiveAdmin();
-      allow delete: if false;
-    }
-
-    match /exercises/{exerciseId} {
-      allow read, create, update: if isActiveAdmin();
-      allow delete: if false;
-    }
-
-    match /trainingPlanTemplates/{templateId} {
-      allow read, create, update: if isActiveAdmin();
-      allow delete: if false;
-    }
-
-    match /trainingPlans/{planId} {
-      allow read: if isActiveAdmin();
-      allow create: if isActiveAdmin()
+    match /exerciseCategories/{categoryId} {
+      allow read: if canReadMasterData(resource.data.gymId, resource.data.isActive);
+      allow create: if isGymAdmin(request.resource.data.gymId)
+        && request.resource.data.id == categoryId
         && request.resource.data.createdBy == request.auth.uid
-        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']
-        && request.resource.data.status in ['draft', 'published', 'archived'];
-      allow update: if isActiveAdmin()
+        && request.resource.data.isActive == true;
+      allow update: if isGymAdmin(resource.data.gymId)
+        && request.resource.data.gymId == resource.data.gymId
+        && request.resource.data.id == resource.data.id
         && request.resource.data.createdBy == resource.data.createdBy
-        && request.resource.data.trainingPlanType in ['compound_full_body', 'two_muscle_split', 'single_muscle_split']
-        && request.resource.data.status in ['draft', 'published', 'archived'];
+        && request.resource.data.createdAt == resource.data.createdAt;
       allow delete: if false;
-
-      match /workoutDays/{dayId} {
-        allow read: if isActiveAdmin();
-        allow create, update: if isActiveAdmin()
-          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true
-          && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'
-          && request.resource.data.order >= 1;
-        allow delete: if false;
-
-        match /exercises/{itemId} {
-          allow read: if isActiveAdmin();
-          allow create, update: if isActiveAdmin()
-            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.active == true
-            && get(/databases/$(database)/documents/trainingPlans/$(planId)).data.status != 'archived'
-            && request.resource.data.sets >= 1
-            && request.resource.data.sets <= 20
-            && request.resource.data.reps >= 1
-            && request.resource.data.reps <= 100
-            && request.resource.data.displayOrder >= 1
-            && (request.resource.data.targetWeight == null || request.resource.data.targetWeight >= 0)
-            && (request.resource.data.restSeconds == null
-              || (request.resource.data.restSeconds >= 0 && request.resource.data.restSeconds <= 600));
-          allow delete: if false;
-        }
-      }
     }
+
+    match /exerciseLibrary/{exerciseId} {
+      allow read: if canReadMasterData(resource.data.gymId, resource.data.isActive);
+      allow create: if isGymAdmin(request.resource.data.gymId)
+        && request.resource.data.id == exerciseId
+        && request.resource.data.createdBy == request.auth.uid
+        && request.resource.data.isActive == true
+        && get(/databases/$(database)/documents/exerciseCategories/$(request.resource.data.categoryId)).data.gymId == request.resource.data.gymId;
+      allow update: if isGymAdmin(resource.data.gymId)
+        && request.resource.data.gymId == resource.data.gymId
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.createdBy == resource.data.createdBy
+        && request.resource.data.createdAt == resource.data.createdAt
+        && get(/databases/$(database)/documents/exerciseCategories/$(request.resource.data.categoryId)).data.gymId == resource.data.gymId;
+      allow delete: if false;
+    }
+
+    match /workoutMasters/{masterId} {
+      allow read: if canReadMasterData(resource.data.gymId, resource.data.isActive);
+      allow create: if isGymAdmin(request.resource.data.gymId)
+        && request.resource.data.id == masterId
+        && request.resource.data.createdBy == request.auth.uid
+        && request.resource.data.isActive == true
+        && request.resource.data.workoutType in ['compound', 'dual', 'single', 'cardio', 'custom'];
+      allow update: if isGymAdmin(resource.data.gymId)
+        && request.resource.data.gymId == resource.data.gymId
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.createdBy == resource.data.createdBy
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.workoutType in ['compound', 'dual', 'single', 'cardio', 'custom'];
+      allow delete: if false;
+    }
+
+    match /memberWorkouts/{workoutId} {
+      allow read: if isGymAdmin(resource.data.gymId)
+        || isActiveSelfMember(resource.data.memberId);
+      allow create: if isGymAdmin(request.resource.data.gymId)
+        && targetIsActiveMember(request.resource.data.memberId, request.resource.data.gymId)
+        && request.resource.data.id == workoutId
+        && request.resource.data.assignedBy == request.auth.uid
+        && request.resource.data.status == 'assigned'
+        && request.resource.data.exerciseCount > 0;
+      allow update: if (isGymAdmin(resource.data.gymId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+          && request.resource.data.status in ['assigned', 'cancelled'])
+        || (isActiveSelfMember(resource.data.memberId)
+          && resource.data.status == 'assigned'
+          && request.resource.data.status == 'completed'
+          && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['status', 'completedAt', 'completedExerciseCount', 'updatedAt'])
+          && request.resource.data.completedExerciseCount >= 0
+          && request.resource.data.completedExerciseCount <= resource.data.exerciseCount);
+      allow delete: if false;
+    }
+
+    match /memberWorkoutExercises/{exerciseId} {
+      allow read: if isGymAdmin(resource.data.gymId)
+        || isActiveSelfMember(resource.data.memberId);
+      allow create: if isGymAdmin(request.resource.data.gymId)
+        && request.resource.data.id == exerciseId
+        && request.resource.data.order > 0
+        && getAfter(/databases/$(database)/documents/memberWorkouts/$(request.resource.data.memberWorkoutId)).data.gymId == request.resource.data.gymId
+        && getAfter(/databases/$(database)/documents/memberWorkouts/$(request.resource.data.memberWorkoutId)).data.memberId == request.resource.data.memberId
+        && getAfter(/databases/$(database)/documents/memberWorkouts/$(request.resource.data.memberWorkoutId)).data.assignedBy == request.auth.uid;
+      allow update: if isActiveSelfMember(resource.data.memberId)
+        && get(/databases/$(database)/documents/memberWorkouts/$(resource.data.memberWorkoutId)).data.memberId == request.auth.uid
+        && get(/databases/$(database)/documents/memberWorkouts/$(resource.data.memberWorkoutId)).data.status == 'assigned'
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['isCompleted', 'completedAt', 'updatedAt'])
+        && request.resource.data.isCompleted is bool;
+      allow delete: if false;
+    }
+
+    match /memberMeasurements/{measurementId} {
+      allow read: if isGymAdmin(resource.data.gymId)
+        || isActiveSelfMember(resource.data.memberId);
+      allow create: if isGymAdmin(request.resource.data.gymId)
+        && targetIsActiveMember(request.resource.data.memberId, request.resource.data.gymId)
+        && request.resource.data.id == measurementId
+        && request.resource.data.recordedBy == request.auth.uid;
+      allow update: if isGymAdmin(resource.data.gymId)
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.gymId == resource.data.gymId
+        && request.resource.data.memberId == resource.data.memberId
+        && request.resource.data.recordedBy == resource.data.recordedBy
+        && request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if isGymAdmin(resource.data.gymId);
+    }
+
   }
 }

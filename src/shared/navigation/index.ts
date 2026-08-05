@@ -1,9 +1,9 @@
 export { RootNavigator } from './RootNavigator';
 export { AdminNavigator } from './AdminNavigator';
-export type { RootStackParamList } from './types';
+export type { RootStackParamList, MemberTabParamList } from './types';
+export { MemberNavigator } from './MemberNavigator';
 export type {
   AdminTabParamList,
-  ExerciseStackParamList,
-  TrainingPlanStackParamList,
   MemberStackParamList,
+  MasterDataStackParamList,
 } from './admin-types';

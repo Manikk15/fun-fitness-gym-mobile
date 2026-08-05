@@ -85,13 +85,12 @@ promote the first administrator manually with `role: "admin"` and `status:
 "active"`. Publish [firestore.rules](./firestore.rules) before testing member
 approval or admin management.
 
-## Training plan model
+## Workout master data
 
-Training plans are assigned only by an active admin through
-`currentTrainingPlanType`. The supported types are `compound_full_body`,
-`two_muscle_split`, and `single_muscle_split`. Template names and workout items
-are admin-configured Firestore data; the app does not automatically progress a
-member between plans based on time.
+Active administrators can manage Workouts, Exercise Categories, and Exercises
+from the Master Data tab. To seed the bundled defaults, sign in as an active
+admin, open **Master Data**, and tap **Import master-data.json**. The import is
+scoped to the admin's gym and safely skips existing IDs or names.
 
 Deploy Firestore rules after reviewing them:
 

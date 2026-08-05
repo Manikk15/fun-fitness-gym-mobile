@@ -4,12 +4,25 @@ export type {
   UserProfile,
   UserRole,
   UserStatus,
-  TrainingPlanAssignmentInput,
+  MemberGoal,
+  AdminMemberProfileInput,
 } from './user';
-export type { Category, CategoryInput } from './category';
-export type { Exercise, ExerciseInput } from './exercise';
+export type { MemberMeasurement, MemberMeasurementInput } from './member-measurement';
 export type {
-  TrainingPlanTemplate,
-  TrainingPlanType,
-  WorkoutItem,
-} from './training-plan';
+  DefaultUnitType,
+  ExerciseCategory,
+  ExerciseCategoryInput,
+  ExerciseLibraryInput,
+  ExerciseLibraryItem,
+  WorkoutMaster,
+  WorkoutMasterInput,
+  WorkoutMasterType,
+} from './master-data';
+export type {
+  AssignmentExerciseInput,
+  DistanceUnit,
+  DurationUnit,
+  MemberWorkout,
+  MemberWorkoutExercise,
+  MemberWorkoutStatus,
+} from './member-workout';

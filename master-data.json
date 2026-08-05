@@ -1,0 +1,3138 @@
+{
+  "workoutMasters": [
+    {
+      "id": "workout-master-compound-1",
+      "name": "Compound 1",
+      "workoutType": "compound",
+      "sortOrder": 1,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-compound-2",
+      "name": "Compound 2",
+      "workoutType": "compound",
+      "sortOrder": 2,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-compound-3",
+      "name": "Compound 3",
+      "workoutType": "compound",
+      "sortOrder": 3,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-dual-1",
+      "name": "Dual 1",
+      "workoutType": "dual",
+      "sortOrder": 4,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-dual-2",
+      "name": "Dual 2",
+      "workoutType": "dual",
+      "sortOrder": 5,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-dual-3",
+      "name": "Dual 3",
+      "workoutType": "dual",
+      "sortOrder": 6,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-single-chest",
+      "name": "Single Chest",
+      "workoutType": "single",
+      "sortOrder": 7,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-single-back",
+      "name": "Single Back",
+      "workoutType": "single",
+      "sortOrder": 8,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-single-legs",
+      "name": "Single Legs",
+      "workoutType": "single",
+      "sortOrder": 9,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-single-shoulders",
+      "name": "Single Shoulders",
+      "workoutType": "single",
+      "sortOrder": 10,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-single-biceps",
+      "name": "Single Biceps",
+      "workoutType": "single",
+      "sortOrder": 11,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-single-triceps",
+      "name": "Single Triceps",
+      "workoutType": "single",
+      "sortOrder": 12,
+      "isDefault": true
+    },
+    {
+      "id": "workout-master-cardio",
+      "name": "Cardio",
+      "workoutType": "cardio",
+      "sortOrder": 13,
+      "isDefault": true
+    }
+  ],
+  "exerciseCategories": [
+    {
+      "id": "category-chest",
+      "name": "Chest",
+      "sortOrder": 1,
+      "isDefault": true
+    },
+    {
+      "id": "category-back",
+      "name": "Back",
+      "sortOrder": 2,
+      "isDefault": true
+    },
+    {
+      "id": "category-legs",
+      "name": "Legs",
+      "sortOrder": 3,
+      "isDefault": true
+    },
+    {
+      "id": "category-shoulders",
+      "name": "Shoulders",
+      "sortOrder": 4,
+      "isDefault": true
+    },
+    {
+      "id": "category-biceps",
+      "name": "Biceps",
+      "sortOrder": 5,
+      "isDefault": true
+    },
+    {
+      "id": "category-triceps",
+      "name": "Triceps",
+      "sortOrder": 6,
+      "isDefault": true
+    },
+    {
+      "id": "category-core",
+      "name": "Core",
+      "sortOrder": 7,
+      "isDefault": true
+    },
+    {
+      "id": "category-cardio",
+      "name": "Cardio",
+      "sortOrder": 8,
+      "isDefault": true
+    },
+    {
+      "id": "category-functional",
+      "name": "Functional",
+      "sortOrder": 9,
+      "isDefault": true
+    },
+    {
+      "id": "category-stretching",
+      "name": "Stretching",
+      "sortOrder": 10,
+      "isDefault": true
+    }
+  ],
+  "exerciseLibrary": [
+    {
+      "id": "exercise-barbell-bench-press",
+      "name": "Barbell Bench Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-bench-press",
+      "name": "Dumbbell Bench Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-barbell-bench-press",
+      "name": "Incline Barbell Bench Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-dumbbell-bench-press",
+      "name": "Incline Dumbbell Bench Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-decline-barbell-bench-press",
+      "name": "Decline Barbell Bench Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-decline-dumbbell-bench-press",
+      "name": "Decline Dumbbell Bench Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-chest-press",
+      "name": "Machine Chest Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-machine-chest-press",
+      "name": "Incline Machine Chest Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-plate-loaded-chest-press",
+      "name": "Plate Loaded Chest Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-smith-machine-bench-press",
+      "name": "Smith Machine Bench Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-chest-press",
+      "name": "Cable Chest Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-standing-cable-chest-press",
+      "name": "Standing Cable Chest Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-fly",
+      "name": "Cable Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-low-to-high-cable-fly",
+      "name": "Low to High Cable Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-high-to-low-cable-fly",
+      "name": "High to Low Cable Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-fly",
+      "name": "Dumbbell Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-dumbbell-fly",
+      "name": "Incline Dumbbell Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-pec-deck-fly",
+      "name": "Pec Deck Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-push-up",
+      "name": "Push Up",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wide-grip-push-up",
+      "name": "Wide Grip Push Up",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-diamond-push-up",
+      "name": "Diamond Push Up",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-push-up",
+      "name": "Incline Push Up",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-decline-push-up",
+      "name": "Decline Push Up",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kneeling-push-up",
+      "name": "Kneeling Push Up",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-chest-dip",
+      "name": "Chest Dip",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-svend-press",
+      "name": "Svend Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-pullover",
+      "name": "Dumbbell Pullover",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-cable-fly",
+      "name": "Single Arm Cable Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-chest-press",
+      "name": "Resistance Band Chest Press",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-chest-fly",
+      "name": "Resistance Band Chest Fly",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-medicine-ball-chest-pass",
+      "name": "Medicine Ball Chest Pass",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-plyometric-push-up",
+      "name": "Plyometric Push Up",
+      "categoryId": "category-chest",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-conventional-deadlift",
+      "name": "Conventional Deadlift",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-sumo-deadlift",
+      "name": "Sumo Deadlift",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rack-pull",
+      "name": "Rack Pull",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-bent-over-row",
+      "name": "Barbell Bent Over Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-pendlay-row",
+      "name": "Pendlay Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-underhand-barbell-row",
+      "name": "Underhand Barbell Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-row",
+      "name": "Dumbbell Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-chest-supported-dumbbell-row",
+      "name": "Chest Supported Dumbbell Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-bench-dumbbell-row",
+      "name": "Incline Bench Dumbbell Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-dumbbell-row",
+      "name": "Single Arm Dumbbell Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-t-bar-row",
+      "name": "T Bar Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-high-row",
+      "name": "Machine High Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-low-row",
+      "name": "Machine Low Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-seated-cable-row",
+      "name": "Seated Cable Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wide-grip-cable-row",
+      "name": "Wide Grip Cable Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-cable-row",
+      "name": "Single Arm Cable Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lat-pulldown",
+      "name": "Lat Pulldown",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wide-grip-lat-pulldown",
+      "name": "Wide Grip Lat Pulldown",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-close-grip-lat-pulldown",
+      "name": "Close Grip Lat Pulldown",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-grip-lat-pulldown",
+      "name": "Reverse Grip Lat Pulldown",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-lat-pulldown",
+      "name": "Single Arm Lat Pulldown",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-straight-arm-pulldown",
+      "name": "Straight Arm Pulldown",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-pull-up",
+      "name": "Pull Up",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-chin-up",
+      "name": "Chin Up",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-neutral-grip-pull-up",
+      "name": "Neutral Grip Pull Up",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-assisted-pull-up",
+      "name": "Assisted Pull Up",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-inverted-row",
+      "name": "Inverted Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-row",
+      "name": "Resistance Band Row",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-pulldown",
+      "name": "Resistance Band Pulldown",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-back-extension",
+      "name": "Back Extension",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-superman-back-extension",
+      "name": "Superman Back Extension",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-good-morning",
+      "name": "Good Morning",
+      "categoryId": "category-back",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-back-squat",
+      "name": "Back Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-front-squat",
+      "name": "Front Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-goblet-squat",
+      "name": "Goblet Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-box-squat",
+      "name": "Box Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-hack-squat",
+      "name": "Hack Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-smith-machine-squat",
+      "name": "Smith Machine Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-leg-press",
+      "name": "Leg Press",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-leg-press",
+      "name": "Single Leg Press",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-leg-extension",
+      "name": "Leg Extension",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lying-leg-curl",
+      "name": "Lying Leg Curl",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-seated-leg-curl",
+      "name": "Seated Leg Curl",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-standing-leg-curl",
+      "name": "Standing Leg Curl",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-romanian-deadlift",
+      "name": "Romanian Deadlift",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-romanian-deadlift",
+      "name": "Dumbbell Romanian Deadlift",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-stiff-leg-deadlift",
+      "name": "Stiff Leg Deadlift",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bulgarian-split-squat",
+      "name": "Bulgarian Split Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-walking-lunges",
+      "name": "Walking Lunges",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-lunge",
+      "name": "Reverse Lunge",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-forward-lunge",
+      "name": "Forward Lunge",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lateral-lunge",
+      "name": "Lateral Lunge",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-curtsy-lunge",
+      "name": "Curtsy Lunge",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-step-up",
+      "name": "Step Up",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-step-up",
+      "name": "Dumbbell Step Up",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-glute-bridge",
+      "name": "Glute Bridge",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-hip-thrust",
+      "name": "Barbell Hip Thrust",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-leg-hip-thrust",
+      "name": "Single Leg Hip Thrust",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-pull-through",
+      "name": "Cable Pull Through",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-kickback",
+      "name": "Cable Kickback",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-standing-calf-raise",
+      "name": "Standing Calf Raise",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-seated-calf-raise",
+      "name": "Seated Calf Raise",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-donkey-calf-raise",
+      "name": "Donkey Calf Raise",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bodyweight-squat",
+      "name": "Bodyweight Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wall-sit",
+      "name": "Wall Sit",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-nordic-hamstring-curl",
+      "name": "Nordic Hamstring Curl",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-sissy-squat",
+      "name": "Sissy Squat",
+      "categoryId": "category-legs",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-overhead-press",
+      "name": "Barbell Overhead Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-shoulder-press",
+      "name": "Dumbbell Shoulder Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-seated-dumbbell-shoulder-press",
+      "name": "Seated Dumbbell Shoulder Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-arnold-press",
+      "name": "Arnold Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-shoulder-press",
+      "name": "Machine Shoulder Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-smith-machine-shoulder-press",
+      "name": "Smith Machine Shoulder Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-push-press",
+      "name": "Push Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-landmine-press",
+      "name": "Landmine Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-landmine-press",
+      "name": "Single Arm Landmine Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-lateral-raise",
+      "name": "Dumbbell Lateral Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-lateral-raise",
+      "name": "Cable Lateral Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-lateral-raise",
+      "name": "Machine Lateral Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-leaning-cable-lateral-raise",
+      "name": "Leaning Cable Lateral Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-front-dumbbell-raise",
+      "name": "Front Dumbbell Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-front-raise",
+      "name": "Cable Front Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-plate-front-raise",
+      "name": "Plate Front Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-dumbbell-fly",
+      "name": "Reverse Dumbbell Fly",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-pec-deck",
+      "name": "Reverse Pec Deck",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-rear-delt-fly",
+      "name": "Cable Rear Delt Fly",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-face-pull",
+      "name": "Face Pull",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-upright-row",
+      "name": "Upright Row",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-upright-row",
+      "name": "Dumbbell Upright Row",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-shrug",
+      "name": "Barbell Shrug",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-shrug",
+      "name": "Dumbbell Shrug",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-shrug",
+      "name": "Cable Shrug",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bradford-press",
+      "name": "Bradford Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cuban-press",
+      "name": "Cuban Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-y-raise",
+      "name": "Y Raise",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-pull-apart",
+      "name": "Resistance Band Pull Apart",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-shoulder-press",
+      "name": "Resistance Band Shoulder Press",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-handstand-push-up",
+      "name": "Handstand Push Up",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-pike-push-up",
+      "name": "Pike Push Up",
+      "categoryId": "category-shoulders",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-curl",
+      "name": "Barbell Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-ez-bar-curl",
+      "name": "EZ Bar Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-curl",
+      "name": "Dumbbell Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-alternating-dumbbell-curl",
+      "name": "Alternating Dumbbell Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-dumbbell-curl",
+      "name": "Incline Dumbbell Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-seated-dumbbell-curl",
+      "name": "Seated Dumbbell Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-hammer-curl",
+      "name": "Hammer Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cross-body-hammer-curl",
+      "name": "Cross Body Hammer Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rope-hammer-curl",
+      "name": "Rope Hammer Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-concentration-curl",
+      "name": "Concentration Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-preacher-curl",
+      "name": "Preacher Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-ez-bar-preacher-curl",
+      "name": "EZ Bar Preacher Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-preacher-curl",
+      "name": "Dumbbell Preacher Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-preacher-curl",
+      "name": "Machine Preacher Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-curl",
+      "name": "Cable Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-straight-bar-cable-curl",
+      "name": "Straight Bar Cable Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rope-cable-curl",
+      "name": "Rope Cable Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-cable-curl",
+      "name": "Single Arm Cable Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-high-cable-curl",
+      "name": "High Cable Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bayesian-cable-curl",
+      "name": "Bayesian Cable Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-spider-curl",
+      "name": "Spider Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-zottman-curl",
+      "name": "Zottman Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-barbell-curl",
+      "name": "Reverse Barbell Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-ez-bar-curl",
+      "name": "Reverse EZ Bar Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-drag-curl",
+      "name": "Drag Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-waiter-curl",
+      "name": "Waiter Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-curl",
+      "name": "Resistance Band Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-chin-up-biceps-focus",
+      "name": "Chin Up Biceps Focus",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-isometric-biceps-hold",
+      "name": "Isometric Biceps Hold",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-21s-biceps-curl",
+      "name": "21s Biceps Curl",
+      "categoryId": "category-biceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-close-grip-bench-press",
+      "name": "Close Grip Bench Press",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-skull-crusher",
+      "name": "Barbell Skull Crusher",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-ez-bar-skull-crusher",
+      "name": "EZ Bar Skull Crusher",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-skull-crusher",
+      "name": "Dumbbell Skull Crusher",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-skull-crusher",
+      "name": "Incline Skull Crusher",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-triceps-pushdown",
+      "name": "Cable Triceps Pushdown",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rope-triceps-pushdown",
+      "name": "Rope Triceps Pushdown",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-grip-pushdown",
+      "name": "Reverse Grip Pushdown",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-pushdown",
+      "name": "Single Arm Pushdown",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-overhead-cable-extension",
+      "name": "Overhead Cable Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rope-overhead-extension",
+      "name": "Rope Overhead Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-overhead-cable-extension",
+      "name": "Single Arm Overhead Cable Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-overhead-triceps-extension",
+      "name": "Dumbbell Overhead Triceps Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-dumbbell-triceps-extension",
+      "name": "Single Arm Dumbbell Triceps Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lying-dumbbell-triceps-extension",
+      "name": "Lying Dumbbell Triceps Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-triceps-dip",
+      "name": "Triceps Dip",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bench-dip",
+      "name": "Bench Dip",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-assisted-triceps-dip",
+      "name": "Assisted Triceps Dip",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-diamond-push-up-triceps-focus",
+      "name": "Diamond Push Up Triceps Focus",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-triceps-extension",
+      "name": "Machine Triceps Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-triceps-kickback",
+      "name": "Cable Triceps Kickback",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-triceps-kickback",
+      "name": "Dumbbell Triceps Kickback",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cross-body-cable-extension",
+      "name": "Cross Body Cable Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-jm-press",
+      "name": "JM Press",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-tate-press",
+      "name": "Tate Press",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-pushdown",
+      "name": "Resistance Band Pushdown",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-resistance-band-overhead-extension",
+      "name": "Resistance Band Overhead Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "resistance_band",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bodyweight-triceps-extension",
+      "name": "Bodyweight Triceps Extension",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-close-grip-push-up",
+      "name": "Close Grip Push Up",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-isometric-triceps-press",
+      "name": "Isometric Triceps Press",
+      "categoryId": "category-triceps",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-plank",
+      "name": "Plank",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-forearm-plank",
+      "name": "Forearm Plank",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-high-plank",
+      "name": "High Plank",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-side-plank",
+      "name": "Side Plank",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-weighted-plank",
+      "name": "Weighted Plank",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-plank-shoulder-tap",
+      "name": "Plank Shoulder Tap",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-plank-hip-dip",
+      "name": "Plank Hip Dip",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rkc-plank",
+      "name": "RKC Plank",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-crunches",
+      "name": "Crunches",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bicycle-crunch",
+      "name": "Bicycle Crunch",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-reverse-crunch",
+      "name": "Reverse Crunch",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-crunch",
+      "name": "Cable Crunch",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-machine-crunch",
+      "name": "Machine Crunch",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-weighted-crunch",
+      "name": "Weighted Crunch",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-sit-up",
+      "name": "Sit Up",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-decline-sit-up",
+      "name": "Decline Sit Up",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-v-up",
+      "name": "V Up",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-toe-touch",
+      "name": "Toe Touch",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dead-bug",
+      "name": "Dead Bug",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bird-dog",
+      "name": "Bird Dog",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-hollow-body-hold",
+      "name": "Hollow Body Hold",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-leg-raise",
+      "name": "Leg Raise",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-hanging-leg-raise",
+      "name": "Hanging Leg Raise",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-captain-chair-knee-raise",
+      "name": "Captain Chair Knee Raise",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-mountain-climber",
+      "name": "Mountain Climber",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-russian-twist",
+      "name": "Russian Twist",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cable-wood-chop",
+      "name": "Cable Wood Chop",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-pallof-press",
+      "name": "Pallof Press",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps_weight",
+      "equipment": "cable",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-ab-wheel-rollout",
+      "name": "Ab Wheel Rollout",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dragon-flag",
+      "name": "Dragon Flag",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-flutter-kick",
+      "name": "Flutter Kick",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-scissor-kick",
+      "name": "Scissor Kick",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-heel-touch",
+      "name": "Heel Touch",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_reps",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bear-plank",
+      "name": "Bear Plank",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-l-sit-hold",
+      "name": "L Sit Hold",
+      "categoryId": "category-core",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-running",
+      "name": "Running",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-walking",
+      "name": "Walking",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cycling",
+      "name": "Cycling",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cross-trainer",
+      "name": "Cross Trainer",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-treadmill",
+      "name": "Treadmill",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-outdoor-jogging",
+      "name": "Outdoor Jogging",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-incline-treadmill-walk",
+      "name": "Incline Treadmill Walk",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-treadmill-sprint",
+      "name": "Treadmill Sprint",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-interval-running",
+      "name": "Interval Running",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-stair-climber",
+      "name": "Stair Climber",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-stationary-bike",
+      "name": "Stationary Bike",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-recumbent-bike",
+      "name": "Recumbent Bike",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-spin-bike",
+      "name": "Spin Bike",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-air-bike",
+      "name": "Air Bike",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rowing-machine",
+      "name": "Rowing Machine",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-ski-erg",
+      "name": "Ski Erg",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-elliptical-trainer",
+      "name": "Elliptical Trainer",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-arc-trainer",
+      "name": "Arc Trainer",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "cardio_machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-step-machine",
+      "name": "Step Machine",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-jump-rope",
+      "name": "Jump Rope",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-high-knees",
+      "name": "High Knees",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-jumping-jacks",
+      "name": "Jumping Jacks",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-burpees-cardio",
+      "name": "Burpees Cardio",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-shadow-boxing",
+      "name": "Shadow Boxing",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-swimming",
+      "name": "Swimming",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-hiking",
+      "name": "Hiking",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-power-walking",
+      "name": "Power Walking",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-track-sprints",
+      "name": "Track Sprints",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-shuttle-run",
+      "name": "Shuttle Run",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-hill-sprints",
+      "name": "Hill Sprints",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-backward-walking",
+      "name": "Backward Walking",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lateral-shuffle",
+      "name": "Lateral Shuffle",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-low-impact-march",
+      "name": "Low Impact March",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "none",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dance-cardio",
+      "name": "Dance Cardio",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cardio-kickboxing",
+      "name": "Cardio Kickboxing",
+      "categoryId": "category-cardio",
+      "defaultUnitType": "duration",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-farmer-walk",
+      "name": "Farmer Walk",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-suitcase-carry",
+      "name": "Suitcase Carry",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-overhead-carry",
+      "name": "Overhead Carry",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-front-rack-carry",
+      "name": "Front Rack Carry",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-waiter-carry",
+      "name": "Waiter Carry",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-battle-rope",
+      "name": "Battle Rope",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-battle-rope-alternating-waves",
+      "name": "Battle Rope Alternating Waves",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-battle-rope-slams",
+      "name": "Battle Rope Slams",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kettlebell-swing",
+      "name": "Kettlebell Swing",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "kettlebell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-single-arm-kettlebell-swing",
+      "name": "Single Arm Kettlebell Swing",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "kettlebell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kettlebell-clean",
+      "name": "Kettlebell Clean",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "kettlebell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kettlebell-snatch",
+      "name": "Kettlebell Snatch",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "kettlebell",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kettlebell-goblet-squat",
+      "name": "Kettlebell Goblet Squat",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "kettlebell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kettlebell-turkish-get-up",
+      "name": "Kettlebell Turkish Get Up",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "kettlebell",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-dumbbell-thruster",
+      "name": "Dumbbell Thruster",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "dumbbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-thruster",
+      "name": "Barbell Thruster",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wall-ball",
+      "name": "Wall Ball",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-medicine-ball-slam",
+      "name": "Medicine Ball Slam",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-medicine-ball-rotational-throw",
+      "name": "Medicine Ball Rotational Throw",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-box-jump",
+      "name": "Box Jump",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-broad-jump",
+      "name": "Broad Jump",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-burpee",
+      "name": "Burpee",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-bear-crawl",
+      "name": "Bear Crawl",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-crab-walk",
+      "name": "Crab Walk",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-sled-push",
+      "name": "Sled Push",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-sled-pull",
+      "name": "Sled Pull",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-sandbag-carry",
+      "name": "Sandbag Carry",
+      "categoryId": "category-functional",
+      "defaultUnitType": "distance",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-sandbag-clean",
+      "name": "Sandbag Clean",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-tire-flip",
+      "name": "Tire Flip",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-rope-climb",
+      "name": "Rope Climb",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-renegade-row",
+      "name": "Renegade Row",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-man-maker",
+      "name": "Man Maker",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "dumbbell",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-clean-and-press",
+      "name": "Clean and Press",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-barbell-power-clean",
+      "name": "Barbell Power Clean",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "barbell",
+      "difficulty": "advanced",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-agility-ladder-drill",
+      "name": "Agility Ladder Drill",
+      "categoryId": "category-functional",
+      "defaultUnitType": "rounds",
+      "equipment": "none",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-standing-hamstring-stretch",
+      "name": "Standing Hamstring Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-seated-hamstring-stretch",
+      "name": "Seated Hamstring Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lying-hamstring-stretch",
+      "name": "Lying Hamstring Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-standing-quadriceps-stretch",
+      "name": "Standing Quadriceps Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kneeling-hip-flexor-stretch",
+      "name": "Kneeling Hip Flexor Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-pigeon-pose",
+      "name": "Pigeon Pose",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-figure-four-stretch",
+      "name": "Figure Four Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-butterfly-stretch",
+      "name": "Butterfly Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-frog-stretch",
+      "name": "Frog Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-child-pose",
+      "name": "Child Pose",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cobra-stretch",
+      "name": "Cobra Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cat-cow-stretch",
+      "name": "Cat Cow Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-thread-the-needle-stretch",
+      "name": "Thread the Needle Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-open-book-stretch",
+      "name": "Open Book Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-standing-side-bend-stretch",
+      "name": "Standing Side Bend Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-doorway-chest-stretch",
+      "name": "Doorway Chest Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wall-chest-stretch",
+      "name": "Wall Chest Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-cross-body-shoulder-stretch",
+      "name": "Cross Body Shoulder Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-overhead-triceps-stretch",
+      "name": "Overhead Triceps Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lat-stretch",
+      "name": "Lat Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-kneeling-lat-stretch",
+      "name": "Kneeling Lat Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-upper-trapezius-stretch",
+      "name": "Upper Trapezius Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-levator-scapulae-stretch",
+      "name": "Levator Scapulae Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-neck-rotation-stretch",
+      "name": "Neck Rotation Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wrist-flexor-stretch",
+      "name": "Wrist Flexor Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-wrist-extensor-stretch",
+      "name": "Wrist Extensor Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-standing-calf-stretch",
+      "name": "Standing Calf Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-soleus-stretch",
+      "name": "Soleus Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-ankle-dorsiflexion-stretch",
+      "name": "Ankle Dorsiflexion Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-deep-squat-hold",
+      "name": "Deep Squat Hold",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-world-greatest-stretch",
+      "name": "World Greatest Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-lunge-with-rotation-stretch",
+      "name": "Lunge With Rotation Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-supine-spinal-twist",
+      "name": "Supine Spinal Twist",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "intermediate",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-happy-baby-pose",
+      "name": "Happy Baby Pose",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    },
+    {
+      "id": "exercise-downward-dog-stretch",
+      "name": "Downward Dog Stretch",
+      "categoryId": "category-stretching",
+      "defaultUnitType": "sets_duration",
+      "equipment": "bodyweight",
+      "difficulty": "beginner",
+      "isDefault": true
+    }
+  ]
+}

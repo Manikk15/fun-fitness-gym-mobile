@@ -1,35 +1,26 @@
 export type AdminTabParamList = {
   Home: undefined;
-  Exercises: undefined;
-  Plans: undefined;
+  MasterData: undefined;
   Members: undefined;
   Profile: undefined;
+};
+
+export type MasterDataStackParamList = {
+  MasterDataHome: undefined;
+  WorkoutMasterList: undefined;
+  WorkoutMasterForm: { id?: string };
+  ExerciseCategoryList: undefined;
+  ExerciseCategoryForm: { id?: string };
+  ExerciseLibraryList: undefined;
+  ExerciseLibraryForm: { id?: string };
 };
 
 export type MemberStackParamList = {
   MemberList: undefined;
   MemberDetails: { memberId: string };
-};
-
-export type TrainingPlanStackParamList = {
-  TrainingPlanList: undefined;
-  CreateTrainingPlan: undefined;
-  TrainingPlanDetails: { planId: string };
-  WorkoutDayList: { planId: string; planName: string; readOnly: boolean };
-  WorkoutExerciseList: {
-    planId: string;
-    planName: string;
-    dayId: string;
-    dayName: string;
-    readOnly: boolean;
-  };
-};
-
-export type ExerciseStackParamList = {
-  ExerciseList: undefined;
-  CategoryList: undefined;
-  AddCategory: undefined;
-  EditCategory: { categoryId: string };
-  AddExercise: undefined;
-  EditExercise: { exerciseId: string };
+  AssignWorkout: { memberId: string };
+  AssignedWorkoutDetails: { memberWorkoutId: string; workoutName: string };
+  EditMemberProfile: { memberId: string };
+  MeasurementForm: { memberId: string; measurementId?: string };
+  MeasurementHistory: { memberId: string };
 };

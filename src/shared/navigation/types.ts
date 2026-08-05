@@ -7,4 +7,10 @@ export type RootStackParamList = {
   AccessRestricted: undefined;
   AdminDashboard: undefined;
   MemberDashboard: undefined;
+  MemberWorkoutDetails: { memberWorkoutId: string; workoutName: string };
+};
+
+export type MemberTabParamList = {
+  Home: undefined;
+  Profile: undefined;
 };

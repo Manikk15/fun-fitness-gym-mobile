@@ -1,11 +1,13 @@
 import type { Timestamp } from 'firebase/firestore';
-import type { TrainingPlanType } from './training-plan';
 
-export type UserRole = 'admin' | 'member';
+export type UserRole = 'admin' | 'trainer' | 'member';
 export type UserStatus = 'pending' | 'active' | 'inactive' | 'rejected';
+export type MemberGoal =
+  'Weight Loss' | 'Muscle Gain' | 'General Fitness' | 'Strength' | 'Other';
 
 export type UserProfile = {
   uid: string;
+  gymId?: string;
   name: string;
   email: string;
   role: UserRole;
@@ -14,20 +16,18 @@ export type UserProfile = {
   updatedAt: Timestamp | null;
   approvedBy?: string;
   approvedAt?: Timestamp | null;
-  currentTrainingPlanType: TrainingPlanType | null;
-  assignedTrainingPlanId?: string | null;
-  assignedTrainingPlanNameSnapshot?: string | null;
-  assignedTrainingPlanType?: TrainingPlanType | null;
-  assignedAt?: Timestamp | null;
-  assignedBy?: string | null;
-};
-
-export type TrainingPlanAssignmentInput = {
-  id: string;
-  name: string;
-  trainingPlanType: TrainingPlanType;
-  status: 'published';
-  active: true;
+  phone?: string;
+  dateOfBirth?: Timestamp | null;
+  age?: number;
+  gender?: string;
+  heightCm?: number;
+  currentWeightKg?: number;
+  goal?: MemberGoal;
+  joiningDate?: Timestamp | null;
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  address?: string;
+  notes?: string;
 };
 
 export type CreateUserProfileInput = Omit<
@@ -36,3 +36,20 @@ export type CreateUserProfileInput = Omit<
 >;
 
 export type UpdateUserProfileInput = Partial<Pick<UserProfile, 'name' | 'email'>>;
+export type AdminMemberProfileInput = Partial<
+  Pick<
+    UserProfile,
+    | 'phone'
+    | 'dateOfBirth'
+    | 'age'
+    | 'gender'
+    | 'heightCm'
+    | 'currentWeightKg'
+    | 'goal'
+    | 'joiningDate'
+    | 'emergencyContactName'
+    | 'emergencyContactPhone'
+    | 'address'
+    | 'notes'
+  >
+>;

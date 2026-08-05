@@ -12,6 +12,7 @@ import type { User } from 'firebase/auth';
 import type { UserProfile } from '../../../shared/types';
 import { authService, userService } from '../../../shared/services';
 import type { LoginFormValues, RegisterFormValues } from '../domain/auth.schemas';
+import { DEFAULT_GYM_ID } from '../../../shared/constants';
 
 type AuthContextValue = {
   user: User | null;
@@ -86,11 +87,11 @@ export function AuthProvider({ children }: PropsWithChildren) {
         password,
       );
       const profileData = {
+        gymId: DEFAULT_GYM_ID,
         name: fullName.trim(),
         email: credential.user.email ?? email.trim(),
         role: 'member' as const,
         status: 'pending' as const,
-        currentTrainingPlanType: null,
       };
 
       try {
