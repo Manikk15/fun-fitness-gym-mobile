@@ -4,15 +4,16 @@
     "slug": "fun-fitness-gym-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/fun-fitness-icon.png",
     "userInterfaceStyle": "light",
     "plugins": [
       [
         "expo-splash-screen",
         {
-          "image": "./assets/splash-icon.png",
+          "image": "./assets/fun-fitness-logo-full.png",
+          "imageWidth": 260,
           "resizeMode": "contain",
-          "backgroundColor": "#0B1220"
+          "backgroundColor": "#F8FAFC"
         }
       ],
       "@react-native-community/datetimepicker"
@@ -25,15 +26,13 @@
       "package": "com.funfitnessgym.mobile",
       "softwareKeyboardLayoutMode": "resize",
       "adaptiveIcon": {
-        "backgroundColor": "#0B1220",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundColor": "#F8FAFC",
+        "foregroundImage": "./assets/fun-fitness-logo-full.png"
       },
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/fun-fitness-icon.png"
     },
     "extra": {
       "eas": {

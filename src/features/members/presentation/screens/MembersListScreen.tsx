@@ -122,14 +122,16 @@ export function MembersListScreen() {
                     {member.status} ·{' '}
                     {member.createdAt?.toDate().toLocaleDateString() ?? 'New member'}
                   </Text>
-                  <Pressable
-                    className="mt-3"
-                    onPress={() =>
-                      navigation.navigate('MemberDetails', { memberId: member.uid })
-                    }
-                  >
-                    <Text className="font-semibold text-brand-700">View details</Text>
-                  </Pressable>
+                  {member.status !== 'pending' ? (
+                    <Pressable
+                      className="mt-3"
+                      onPress={() =>
+                        navigation.navigate('MemberDetails', { memberId: member.uid })
+                      }
+                    >
+                      <Text className="font-semibold text-brand-700">View details</Text>
+                    </Pressable>
+                  ) : null}
                   {tab === 'pending' && member.uid !== user?.uid ? (
                     <View className="mt-4 flex-row gap-3">
                       <Pressable

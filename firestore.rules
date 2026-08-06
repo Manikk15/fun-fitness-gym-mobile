@@ -38,6 +38,31 @@ service cloud.firestore {
           ? get(/databases/$(database)/documents/users/$(memberId)).data.gymId
           : 'fun-fitness-gym') == gymId;
     }
+    function workoutExercise(exerciseId) {
+      return get(/databases/$(database)/documents/memberWorkoutExercises/$(exerciseId)).data;
+    }
+    function workoutExerciseAfter(exerciseId) {
+      return getAfter(/databases/$(database)/documents/memberWorkoutExercises/$(exerciseId)).data;
+    }
+    function parentWorkoutIsAssigned(exerciseId) {
+      return get(
+        /databases/$(database)/documents/memberWorkouts/$(workoutExercise(exerciseId).memberWorkoutId)
+      ).data.status == 'assigned';
+    }
+    function setTargetsMatchParent(exerciseId, setData) {
+      return (workoutExercise(exerciseId).setDetails is list
+          && setData.setNumber > 0
+          && workoutExercise(exerciseId).setDetails.size() >= setData.setNumber
+          && setData.targetReps == ('targetReps' in workoutExercise(exerciseId).setDetails[setData.setNumber - 1]
+            ? workoutExercise(exerciseId).setDetails[setData.setNumber - 1].targetReps
+            : workoutExercise(exerciseId).setDetails[setData.setNumber - 1].reps)
+          && setData.targetWeightKg == ('targetWeightKg' in workoutExercise(exerciseId).setDetails[setData.setNumber - 1]
+            ? workoutExercise(exerciseId).setDetails[setData.setNumber - 1].targetWeightKg
+            : workoutExercise(exerciseId).setDetails[setData.setNumber - 1].weightKg))
+        || ((!('setDetails' in workoutExercise(exerciseId)))
+          && setData.targetReps == workoutExercise(exerciseId).reps
+          && setData.targetWeightKg == workoutExercise(exerciseId).weightKg);
+    }
     function canReadMasterData(gymId, isActive) {
       return isGymAdmin(gymId) || (isActiveGymTrainer(gymId) && isActive == true);
     }
@@ -140,6 +165,10 @@ service cloud.firestore {
       allow create: if isGymAdmin(request.resource.data.gymId)
         && request.resource.data.id == exerciseId
         && request.resource.data.order > 0
+        && (request.resource.data.unitType != 'sets_reps_weight'
+          || (request.resource.data.setDetails is list
+            && request.resource.data.setDetails.size() > 0
+            && !request.resource.data.keys().hasAny(['sets', 'reps', 'weightKg'])))
         && getAfter(/databases/$(database)/documents/memberWorkouts/$(request.resource.data.memberWorkoutId)).data.gymId == request.resource.data.gymId
         && getAfter(/databases/$(database)/documents/memberWorkouts/$(request.resource.data.memberWorkoutId)).data.memberId == request.resource.data.memberId
         && getAfter(/databases/$(database)/documents/memberWorkouts/$(request.resource.data.memberWorkoutId)).data.assignedBy == request.auth.uid;
@@ -150,6 +179,34 @@ service cloud.firestore {
           .hasOnly(['isCompleted', 'completedAt', 'updatedAt'])
         && request.resource.data.isCompleted is bool;
       allow delete: if false;
+
+      match /setDetails/{setId} {
+        allow read: if isGymAdmin(workoutExercise(exerciseId).gymId)
+          || isActiveSelfMember(workoutExercise(exerciseId).memberId);
+        allow create: if (isGymAdmin(workoutExerciseAfter(exerciseId).gymId)
+            && request.resource.data.setNumber > 0
+            && request.resource.data.targetReps > 0
+            && request.resource.data.targetWeightKg > 0)
+          || (isActiveSelfMember(workoutExercise(exerciseId).memberId)
+            && parentWorkoutIsAssigned(exerciseId)
+            && setTargetsMatchParent(exerciseId, request.resource.data)
+            && request.resource.data.keys().hasOnly([
+              'setNumber', 'targetReps', 'targetWeightKg', 'actualReps',
+              'actualWeightKg', 'isCompleted', 'completedAt'
+            ])
+            && request.resource.data.actualReps > 0
+            && request.resource.data.actualWeightKg > 0
+            && request.resource.data.isCompleted == true);
+        allow update: if isActiveSelfMember(workoutExercise(exerciseId).memberId)
+          && parentWorkoutIsAssigned(exerciseId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'actualReps', 'actualWeightKg', 'isCompleted', 'completedAt'
+          ])
+          && request.resource.data.actualReps > 0
+          && request.resource.data.actualWeightKg > 0
+          && request.resource.data.isCompleted == true;
+        allow delete: if false;
+      }
     }
 
     match /memberMeasurements/{measurementId} {
@@ -166,6 +223,49 @@ service cloud.firestore {
         && request.resource.data.recordedBy == resource.data.recordedBy
         && request.resource.data.createdAt == resource.data.createdAt;
       allow delete: if isGymAdmin(resource.data.gymId);
+    }
+
+    match /attendance/{attendanceId} {
+      allow get: if (signedIn()
+          && attendanceId.matches(request.auth.uid + '_[0-9]{4}-[0-9]{2}-[0-9]{2}')
+          && isActiveSelfMember(request.auth.uid))
+        || isGymAdmin(resource.data.gymId);
+      allow list: if isGymAdmin(resource.data.gymId)
+        || isActiveSelfMember(resource.data.memberId);
+      allow create: if targetIsActiveMember(
+          request.resource.data.memberId,
+          request.resource.data.gymId
+        )
+        && attendanceId == request.resource.data.memberId + '_' + request.resource.data.date
+        && request.resource.data.id == attendanceId
+        && request.resource.data.date.matches('[0-9]{4}-[0-9]{2}-[0-9]{2}')
+        && request.resource.data.keys().hasOnly([
+          'id', 'gymId', 'memberId', 'date', 'status', 'markedBy',
+          'createdAt', 'updatedAt'
+        ])
+        && ((isGymAdmin(request.resource.data.gymId)
+            && request.resource.data.status in ['present', 'absent']
+            && request.resource.data.markedBy == request.auth.uid)
+          || (isActiveSelfMember(request.resource.data.memberId)
+            && currentGymId() == request.resource.data.gymId
+            && request.resource.data.status == 'present'
+            && request.resource.data.markedBy == request.auth.uid));
+      allow update: if targetIsActiveMember(resource.data.memberId, resource.data.gymId)
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.gymId == resource.data.gymId
+        && request.resource.data.memberId == resource.data.memberId
+        && request.resource.data.date == resource.data.date
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['status', 'markedBy', 'updatedAt'])
+        && ((isGymAdmin(resource.data.gymId)
+            && request.resource.data.status in ['present', 'absent']
+            && request.resource.data.markedBy == request.auth.uid)
+          || (isActiveSelfMember(resource.data.memberId)
+            && currentGymId() == resource.data.gymId
+            && request.resource.data.status == 'present'
+            && request.resource.data.markedBy == request.auth.uid));
+      allow delete: if false;
     }
 
   }

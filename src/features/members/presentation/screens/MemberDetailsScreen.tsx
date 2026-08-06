@@ -12,6 +12,7 @@ import {
 import type { MemberStackParamList } from '../../../../shared/navigation';
 import { userService } from '../../../../shared/services';
 import type {
+  AttendanceRecord,
   MemberMeasurement,
   MemberWorkout,
   UserProfile,
@@ -24,6 +25,7 @@ import {
 } from '../../../masterData/services';
 import { workoutAssignmentService } from '../../../workoutAssignments/services';
 import { memberMeasurementService } from '../../services';
+import { attendanceService } from '../../../attendance';
 
 export function MemberDetailsScreen() {
   const { params } = useRoute<RouteProp<MemberStackParamList, 'MemberDetails'>>();
@@ -40,6 +42,8 @@ export function MemberDetailsScreen() {
   const [workoutDataError, setWorkoutDataError] = useState(false);
   const [measurements, setMeasurements] = useState<MemberMeasurement[]>([]);
   const [measurementError, setMeasurementError] = useState(false);
+  const [attendanceHistory, setAttendanceHistory] = useState<AttendanceRecord[]>([]);
+  const [attendanceError, setAttendanceError] = useState(false);
   const gymId = profile?.gymId || DEFAULT_GYM_ID;
 
   const load = useCallback(
@@ -49,17 +53,24 @@ export function MemberDetailsScreen() {
       setError(false);
       setWorkoutDataError(false);
       setMeasurementError(false);
+      setAttendanceError(false);
       try {
         const memberProfile = await userService.getById(params.memberId);
         if (!memberProfile) throw new Error('member/not-found');
         setMember(memberProfile);
-        const [assigned, activeWorkouts, activeExercises, measurementHistory] =
-          await Promise.allSettled([
-            workoutAssignmentService.listForMember(gymId, params.memberId),
-            workoutMasterService.hasActive(gymId),
-            exerciseLibraryService.hasActive(gymId),
-            memberMeasurementService.list(gymId, params.memberId),
-          ]);
+        const [
+          assigned,
+          activeWorkouts,
+          activeExercises,
+          measurementHistory,
+          attendance,
+        ] = await Promise.allSettled([
+          workoutAssignmentService.listForMember(gymId, params.memberId),
+          workoutMasterService.hasActive(gymId),
+          exerciseLibraryService.hasActive(gymId),
+          memberMeasurementService.list(gymId, params.memberId),
+          attendanceService.listForMember(gymId, params.memberId),
+        ]);
         const failures = [assigned, activeWorkouts, activeExercises].filter(
           (result) => result.status === 'rejected',
         );
@@ -87,6 +98,11 @@ export function MemberDetailsScreen() {
         if (measurementHistory.status === 'rejected') {
           console.error('Measurement history load failed:', measurementHistory.reason);
           setMeasurementError(true);
+        }
+        setAttendanceHistory(attendance.status === 'fulfilled' ? attendance.value : []);
+        if (attendance.status === 'rejected') {
+          console.error('Attendance history load failed:', attendance.reason);
+          setAttendanceError(true);
         }
       } catch (loadError) {
         console.error('Member profile load failed:', loadError);
@@ -262,6 +278,32 @@ export function MemberDetailsScreen() {
                 {assignmentUnavailable}
               </Text>
             ) : null}
+          </View>
+          <View className="mt-6 rounded-2xl bg-white p-5">
+            <Text className="text-xl font-bold text-slate-900">Attendance History</Text>
+            {attendanceError ? (
+              <Text className="mt-2 text-amber-700">
+                Attendance is temporarily unavailable.
+              </Text>
+            ) : attendanceHistory.length ? (
+              <View className="mt-3 gap-2">
+                {attendanceHistory.map((record) => (
+                  <View
+                    key={record.id}
+                    className="flex-row items-center justify-between border-b border-slate-100 py-2"
+                  >
+                    <Text className="text-slate-600">{record.date}</Text>
+                    <Text
+                      className={`font-bold capitalize ${record.status === 'present' ? 'text-green-700' : 'text-red-700'}`}
+                    >
+                      {record.status}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            ) : (
+              <Text className="mt-2 text-slate-500">No attendance recorded yet.</Text>
+            )}
           </View>
           {latest ? (
             <View className="mt-6 rounded-2xl bg-brand-50 p-5">

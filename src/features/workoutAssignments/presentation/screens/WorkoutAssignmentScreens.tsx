@@ -31,10 +31,11 @@ import {
 import { workoutAssignmentService } from '../../services';
 
 type DraftExercise = AssignmentExerciseInput & { localId: string };
+type DraftSetDetail = { reps: string; weightKg: string };
 type DetailValues = {
   sets: string;
   reps: string;
-  weightKg: string;
+  setDetails: DraftSetDetail[];
   durationValue: string;
   durationUnit: DurationUnit;
   distanceValue: string;
@@ -46,7 +47,7 @@ type DetailValues = {
 const emptyDetails = (): DetailValues => ({
   sets: '',
   reps: '',
-  weightKg: '',
+  setDetails: [{ reps: '', weightKg: '' }],
   durationValue: '',
   durationUnit: 'minutes',
   distanceValue: '',
@@ -60,9 +61,12 @@ const positiveInteger = (value: string) =>
 
 function detailsError(type: DefaultUnitType, values: DetailValues): string | null {
   if (type === 'sets_reps_weight') {
-    if (!positiveInteger(values.sets)) return 'Enter valid Sets.';
-    if (!positiveInteger(values.reps)) return 'Enter valid Reps.';
-    if (!positive(values.weightKg)) return 'Enter a valid Weight.';
+    if (!values.setDetails.length) return 'Add at least one Set.';
+    const invalidSetIndex = values.setDetails.findIndex(
+      (set) => !positiveInteger(set.reps) || !positive(set.weightKg),
+    );
+    if (invalidSetIndex >= 0)
+      return `Enter valid Reps and Weight for Set ${invalidSetIndex + 1}.`;
   }
   if (type === 'sets_reps') {
     if (!positiveInteger(values.sets)) return 'Enter valid Sets.';
@@ -84,6 +88,8 @@ function detailsError(type: DefaultUnitType, values: DetailValues): string | nul
 
 function exerciseSummary(item: DraftExercise | MemberWorkoutExercise) {
   const parts: string[] = [];
+  if (item.unitType === 'sets_reps_weight' && item.setDetails?.length)
+    return `${item.setDetails.length} ${item.setDetails.length === 1 ? 'set' : 'sets'}`;
   if (item.sets) parts.push(`${item.sets} sets`);
   if (item.reps) parts.push(`${item.reps} reps`);
   if (item.weightKg) parts.push(`${item.weightKg} kg`);
@@ -193,7 +199,10 @@ export function AssignWorkoutScreen() {
         ? {
             sets: existing.sets ? String(existing.sets) : '',
             reps: existing.reps ? String(existing.reps) : '',
-            weightKg: existing.weightKg ? String(existing.weightKg) : '',
+            setDetails: existing.setDetails?.map((set) => ({
+              reps: String(set.targetReps),
+              weightKg: String(set.targetWeightKg),
+            })) ?? [{ reps: '', weightKg: '' }],
             durationValue: existing.durationValue ? String(existing.durationValue) : '',
             durationUnit: existing.durationUnit ?? 'minutes',
             distanceValue: existing.distanceValue ? String(existing.distanceValue) : '',
@@ -237,7 +246,17 @@ export function AssignWorkoutScreen() {
       order: (editingIndex ?? draft.length) + 1,
       ...(values.sets ? { sets: Number(values.sets) } : {}),
       ...(values.reps ? { reps: Number(values.reps) } : {}),
-      ...(values.weightKg ? { weightKg: Number(values.weightKg) } : {}),
+      ...(detailItem.defaultUnitType === 'sets_reps_weight'
+        ? {
+            setDetails: values.setDetails.map((set, index) => ({
+              setNumber: index + 1,
+              targetReps: Number(set.reps),
+              targetWeightKg: Number(set.weightKg),
+              isCompleted: false,
+              completedAt: null,
+            })),
+          }
+        : {}),
       ...(values.durationValue
         ? {
             durationValue: Number(values.durationValue),
@@ -464,8 +483,7 @@ export function AssignWorkoutScreen() {
             <Text className="text-2xl font-bold text-slate-900">
               {detailItem?.name}
             </Text>
-            {detailItem?.defaultUnitType === 'sets_reps_weight' ||
-            detailItem?.defaultUnitType === 'sets_reps' ||
+            {detailItem?.defaultUnitType === 'sets_reps' ||
             detailItem?.defaultUnitType === 'sets_duration' ? (
               <TextInput
                 label="Sets"
@@ -474,8 +492,7 @@ export function AssignWorkoutScreen() {
                 onChangeText={(sets) => setValues((current) => ({ ...current, sets }))}
               />
             ) : null}
-            {detailItem?.defaultUnitType === 'sets_reps_weight' ||
-            detailItem?.defaultUnitType === 'sets_reps' ? (
+            {detailItem?.defaultUnitType === 'sets_reps' ? (
               <TextInput
                 label="Reps"
                 keyboardType="number-pad"
@@ -484,14 +501,71 @@ export function AssignWorkoutScreen() {
               />
             ) : null}
             {detailItem?.defaultUnitType === 'sets_reps_weight' ? (
-              <TextInput
-                label="Weight in kg"
-                keyboardType="decimal-pad"
-                value={values.weightKg}
-                onChangeText={(weightKg) =>
-                  setValues((current) => ({ ...current, weightKg }))
-                }
-              />
+              <View className="gap-4">
+                {values.setDetails.map((set, index) => (
+                  <View
+                    key={`set-${index + 1}`}
+                    className="gap-3 border-b border-slate-200 pb-4"
+                  >
+                    <View className="flex-row items-center justify-between">
+                      <Text className="text-lg font-bold text-slate-900">
+                        Set {index + 1}
+                      </Text>
+                      {values.setDetails.length > 1 ? (
+                        <Pressable
+                          onPress={() =>
+                            setValues((current) => ({
+                              ...current,
+                              setDetails: current.setDetails.filter(
+                                (_, setIndex) => setIndex !== index,
+                              ),
+                            }))
+                          }
+                        >
+                          <Text className="font-semibold text-red-600">Delete Set</Text>
+                        </Pressable>
+                      ) : null}
+                    </View>
+                    <TextInput
+                      label="Reps"
+                      keyboardType="number-pad"
+                      value={set.reps}
+                      onChangeText={(reps) =>
+                        setValues((current) => ({
+                          ...current,
+                          setDetails: current.setDetails.map((entry, setIndex) =>
+                            setIndex === index ? { ...entry, reps } : entry,
+                          ),
+                        }))
+                      }
+                    />
+                    <TextInput
+                      label="Weight (kg)"
+                      keyboardType="decimal-pad"
+                      value={set.weightKg}
+                      onChangeText={(weightKg) =>
+                        setValues((current) => ({
+                          ...current,
+                          setDetails: current.setDetails.map((entry, setIndex) =>
+                            setIndex === index ? { ...entry, weightKg } : entry,
+                          ),
+                        }))
+                      }
+                    />
+                  </View>
+                ))}
+                <Pressable
+                  className="self-start rounded-xl bg-brand-50 px-4 py-3"
+                  onPress={() =>
+                    setValues((current) => ({
+                      ...current,
+                      setDetails: [...current.setDetails, { reps: '', weightKg: '' }],
+                    }))
+                  }
+                >
+                  <Text className="font-bold text-brand-700">+ Add Set</Text>
+                </Pressable>
+              </View>
             ) : null}
             {detailItem?.defaultUnitType === 'duration' ||
             detailItem?.defaultUnitType === 'sets_duration' ? (
@@ -641,6 +715,33 @@ export function AssignedWorkoutDetailsScreen() {
                 {item.order}. {item.exerciseNameSnapshot}
               </Text>
               <Text className="mt-1 text-slate-500">{exerciseSummary(item)}</Text>
+              {item.unitType === 'sets_reps_weight'
+                ? item.setDetails?.map((set) => (
+                    <View
+                      key={set.setNumber}
+                      className="mt-3 border-t border-slate-200 pt-3"
+                    >
+                      <Text className="font-bold text-slate-800">
+                        Set {set.setNumber}
+                      </Text>
+                      <Text className="mt-1 text-slate-600">
+                        Target: {set.targetReps} reps × {set.targetWeightKg} kg
+                      </Text>
+                      {set.actualReps !== undefined &&
+                      set.actualWeightKg !== undefined ? (
+                        <Text
+                          className={`mt-1 ${set.actualReps !== set.targetReps || set.actualWeightKg !== set.targetWeightKg ? 'font-semibold text-amber-700' : 'text-slate-600'}`}
+                        >
+                          Actual: {set.actualReps} reps × {set.actualWeightKg} kg
+                        </Text>
+                      ) : (
+                        <Text className="mt-1 text-slate-400">
+                          Actual: Not recorded
+                        </Text>
+                      )}
+                    </View>
+                  ))
+                : null}
               {item.notes ? (
                 <Text className="mt-1 text-slate-500">Notes: {item.notes}</Text>
               ) : null}

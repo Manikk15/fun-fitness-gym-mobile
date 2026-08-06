@@ -2,6 +2,7 @@ export type AdminTabParamList = {
   Home: undefined;
   MasterData: undefined;
   Members: undefined;
+  Attendance: undefined;
   Profile: undefined;
 };
 

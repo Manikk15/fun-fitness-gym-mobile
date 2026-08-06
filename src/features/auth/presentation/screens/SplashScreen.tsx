@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -63,17 +63,21 @@ export function SplashScreen() {
   }, [loading, logout, navigation, profile, showToast, user]);
 
   return (
-    <ScreenContainer className="bg-ink" contentClassName="justify-between px-6 py-10">
-      <View className="h-12 w-12 items-center justify-center rounded-2xl bg-brand-500">
-        <Text className="text-xl font-bold text-white">FF</Text>
+    <ScreenContainer contentClassName="items-center px-6 py-10">
+      <View className="flex-1 items-center justify-center">
+        <Image
+          accessibilityLabel="Fun Fitness Gym logo"
+          className="h-64 w-64"
+          resizeMode="contain"
+          source={require('../../../../../assets/fun-fitness-logo-full.png')}
+        />
+        <Text className="mt-6 text-center text-4xl font-bold tracking-tight text-slate-900">
+          {APP_NAME}
+        </Text>
+        <Text className="mt-3 text-center text-base text-slate-500">{APP_TAGLINE}</Text>
       </View>
 
-      <View>
-        <Text className="text-4xl font-bold tracking-tight text-white">{APP_NAME}</Text>
-        <Text className="mt-3 text-base text-slate-300">{APP_TAGLINE}</Text>
-      </View>
-
-      <LoadingSpinner label="Setting up your session" light />
+      <LoadingSpinner label="Setting up your session" />
     </ScreenContainer>
   );
 }

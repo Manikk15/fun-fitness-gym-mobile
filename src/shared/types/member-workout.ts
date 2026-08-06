@@ -5,6 +5,16 @@ export type MemberWorkoutStatus = 'assigned' | 'completed' | 'cancelled';
 export type DurationUnit = 'minutes' | 'seconds';
 export type DistanceUnit = 'metres' | 'kilometres';
 
+export type ExerciseSetDetail = {
+  setNumber: number;
+  targetReps: number;
+  targetWeightKg: number;
+  actualReps?: number;
+  actualWeightKg?: number;
+  isCompleted: boolean;
+  completedAt?: Timestamp | null;
+};
+
 export type MemberWorkout = {
   id: string;
   gymId: string;
@@ -33,6 +43,8 @@ export type MemberWorkoutExercise = {
   categoryNameSnapshot: string;
   unitType: DefaultUnitType;
   order: number;
+  setDetails?: ExerciseSetDetail[];
+  /** Legacy fields retained for reading workouts assigned before setDetails. */
   sets?: number;
   reps?: number;
   weightKg?: number;

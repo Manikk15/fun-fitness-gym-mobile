@@ -14,6 +14,7 @@ import {
 import { firestore } from '../../../shared/services/firebase';
 import type {
   AssignmentExerciseInput,
+  ExerciseSetDetail,
   MemberWorkout,
   MemberWorkoutExercise,
   WorkoutMaster,
@@ -24,8 +25,82 @@ const workoutExercises = collection(firestore, 'memberWorkoutExercises');
 
 const mapWorkout = (id: string, data: Record<string, unknown>) =>
   ({ id, ...data }) as MemberWorkout;
-const mapExercise = (id: string, data: Record<string, unknown>) =>
-  ({ id, ...data }) as MemberWorkoutExercise;
+const mapExercise = (id: string, data: Record<string, unknown>) => {
+  const exercise = { id, ...data } as MemberWorkoutExercise;
+  if (exercise.unitType !== 'sets_reps_weight') return exercise;
+
+  const storedSets = Array.isArray(data.setDetails)
+    ? data.setDetails.map((value, index) => {
+        const set = value as Record<string, unknown>;
+        return {
+          setNumber: Number(set.setNumber ?? index + 1),
+          targetReps: Number(set.targetReps ?? set.reps ?? 0),
+          targetWeightKg: Number(set.targetWeightKg ?? set.weightKg ?? 0),
+          ...(typeof set.actualReps === 'number' ? { actualReps: set.actualReps } : {}),
+          ...(typeof set.actualWeightKg === 'number'
+            ? { actualWeightKg: set.actualWeightKg }
+            : {}),
+          isCompleted: set.isCompleted === true,
+          completedAt:
+            (set.completedAt as MemberWorkoutExercise['completedAt']) ?? null,
+        };
+      })
+    : [];
+  if (storedSets.length) return { ...exercise, setDetails: storedSets };
+
+  const legacySetCount =
+    exercise.sets && Number.isInteger(exercise.sets) && exercise.sets > 0
+      ? exercise.sets
+      : exercise.reps || exercise.weightKg
+        ? 1
+        : 0;
+  if (!legacySetCount) return exercise;
+
+  return {
+    ...exercise,
+    setDetails: Array.from({ length: legacySetCount }, (_, index) => ({
+      setNumber: index + 1,
+      targetReps: exercise.reps ?? 0,
+      targetWeightKg: exercise.weightKg ?? 0,
+      isCompleted: exercise.isCompleted === true,
+      completedAt: exercise.completedAt ?? null,
+    })),
+  };
+};
+
+const hydrateSetDetails = async (exercise: MemberWorkoutExercise) => {
+  if (exercise.unitType !== 'sets_reps_weight') return exercise;
+  let snapshot;
+  try {
+    snapshot = await getDocs(
+      collection(doc(workoutExercises, exercise.id), 'setDetails'),
+    );
+  } catch (error) {
+    if ((error as { code?: string }).code === 'permission-denied') {
+      if (__DEV__)
+        console.warn(
+          '[member-workout] set details unavailable; deploy the latest Firestore rules',
+          { exerciseId: exercise.id },
+        );
+      return exercise;
+    }
+    throw error;
+  }
+  if (snapshot.empty) return exercise;
+  const savedSets = snapshot.docs.map((item) => item.data() as ExerciseSetDetail);
+  const savedByNumber = new Map(savedSets.map((set) => [set.setNumber, set]));
+  const combinedSets = (exercise.setDetails ?? []).map(
+    (set) => savedByNumber.get(set.setNumber) ?? set,
+  );
+  savedSets.forEach((set) => {
+    if (!combinedSets.some((item) => item.setNumber === set.setNumber))
+      combinedSets.push(set);
+  });
+  return {
+    ...exercise,
+    setDetails: combinedSets.sort((left, right) => left.setNumber - right.setNumber),
+  };
+};
 
 export const workoutAssignmentService = {
   async assign({
@@ -76,6 +151,9 @@ export const workoutAssignmentService = {
         completedAt: null,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
+      });
+      exercise.setDetails?.forEach((set) => {
+        batch.set(doc(exerciseReference, 'setDetails', String(set.setNumber)), set);
       });
     });
     await batch.commit();
@@ -144,14 +222,16 @@ export const workoutAssignmentService = {
         where('memberWorkoutId', '==', memberWorkoutId),
       ),
     );
-    return snapshot.docs
+    const items = snapshot.docs
       .map((item) => mapExercise(item.id, item.data()))
       .sort((left, right) => left.order - right.order);
+    return Promise.all(items.map(hydrateSetDetails));
   },
 
   async listExercisesForMember(
     memberId: string,
     memberWorkoutId: string,
+    includeSetDetails = true,
   ): Promise<MemberWorkoutExercise[]> {
     const snapshot = await getDocs(
       query(
@@ -168,7 +248,7 @@ export const workoutAssignmentService = {
         memberWorkoutId,
         count: items.length,
       });
-    return items;
+    return includeSetDetails ? Promise.all(items.map(hydrateSetDetails)) : items;
   },
 
   async getForMember(
@@ -185,6 +265,44 @@ export const workoutAssignmentService = {
     batch.update(doc(workoutExercises, exerciseId), {
       isCompleted,
       completedAt: isCompleted ? serverTimestamp() : null,
+      updatedAt: serverTimestamp(),
+    });
+    await batch.commit();
+  },
+
+  async saveSetResult({
+    exercise,
+    setNumber,
+    actualReps,
+    actualWeightKg,
+    allSetsCompleted,
+  }: {
+    exercise: MemberWorkoutExercise;
+    setNumber: number;
+    actualReps: number;
+    actualWeightKg: number;
+    allSetsCompleted: boolean;
+  }): Promise<void> {
+    const target = exercise.setDetails?.find((set) => set.setNumber === setNumber);
+    if (!target) throw new Error('member-workout/set-not-found');
+    const batch = writeBatch(firestore);
+    const exerciseReference = doc(workoutExercises, exercise.id);
+    batch.set(
+      doc(exerciseReference, 'setDetails', String(setNumber)),
+      {
+        setNumber,
+        targetReps: target.targetReps,
+        targetWeightKg: target.targetWeightKg,
+        actualReps,
+        actualWeightKg,
+        isCompleted: true,
+        completedAt: serverTimestamp(),
+      },
+      { merge: true },
+    );
+    batch.update(exerciseReference, {
+      isCompleted: allSetsCompleted,
+      completedAt: allSetsCompleted ? serverTimestamp() : null,
       updatedAt: serverTimestamp(),
     });
     await batch.commit();

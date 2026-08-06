@@ -8,6 +8,8 @@ export type {
   AdminMemberProfileInput,
 } from './user';
 export type { MemberMeasurement, MemberMeasurementInput } from './member-measurement';
+export { attendanceDate } from './attendance';
+export type { AttendanceRecord, AttendanceStatus } from './attendance';
 export type {
   DefaultUnitType,
   ExerciseCategory,
@@ -22,6 +24,7 @@ export type {
   AssignmentExerciseInput,
   DistanceUnit,
   DurationUnit,
+  ExerciseSetDetail,
   MemberWorkout,
   MemberWorkoutExercise,
   MemberWorkoutStatus,

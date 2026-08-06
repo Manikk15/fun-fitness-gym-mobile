@@ -14,6 +14,7 @@ import {
   AssignedWorkoutDetailsScreen,
 } from '../../features/workoutAssignments/presentation/screens/WorkoutAssignmentScreens';
 import { AdminProfileScreen } from '../../features/profile/presentation/screens/AdminProfileScreen';
+import { TodayAttendanceScreen } from '../../features/attendance';
 import {
   ExerciseCategoryFormScreen,
   ExerciseCategoryListScreen,
@@ -121,6 +122,7 @@ const icons: Record<keyof AdminTabParamList, keyof typeof Ionicons.glyphMap> = {
   Home: 'home-outline',
   MasterData: 'server-outline',
   Members: 'people-outline',
+  Attendance: 'calendar-outline',
   Profile: 'person-outline',
 };
 export function AdminNavigator() {
@@ -141,6 +143,7 @@ export function AdminNavigator() {
         options={{ title: 'Master Data' }}
       />
       <Tabs.Screen name="Members" component={MemberNavigator} />
+      <Tabs.Screen name="Attendance" component={TodayAttendanceScreen} />
       <Tabs.Screen name="Profile" component={AdminProfileScreen} />
     </Tabs.Navigator>
   );

@@ -1,5 +1,5 @@
 import { Controller, useForm } from 'react-hook-form';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -42,6 +42,12 @@ export function LoginScreen() {
   return (
     <ScreenContainer scroll contentClassName="justify-center px-6 py-10">
       <View className="mb-10">
+        <Image
+          accessibilityLabel="Fun Fitness Gym logo"
+          className="mb-6 h-40 w-full"
+          resizeMode="contain"
+          source={require('../../../../../assets/fun-fitness-logo-full.png')}
+        />
         <Text className="text-sm font-bold uppercase tracking-widest text-brand-600">
           Fun Fitness Gym
         </Text>
