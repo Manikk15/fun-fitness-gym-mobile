@@ -16,7 +16,8 @@
           "backgroundColor": "#F8FAFC"
         }
       ],
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "expo-font"
     ],
     "ios": {
       "supportsTablet": true,
@@ -27,7 +28,7 @@
       "softwareKeyboardLayoutMode": "resize",
       "adaptiveIcon": {
         "backgroundColor": "#F8FAFC",
-        "foregroundImage": "./assets/fun-fitness-logo-full.png"
+        "foregroundImage": "./assets/fun-fitness-adaptive-icon.png"
       },
       "predictiveBackGestureEnabled": false
     },
