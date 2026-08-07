@@ -3,6 +3,7 @@ import { Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import type { RouteProp } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   LoadingSpinner,
   PrimaryButton,
@@ -121,6 +122,7 @@ function ChoiceRow({
 export function AssignWorkoutScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<MemberStackParamList>>();
   const { params } = useRoute<RouteProp<MemberStackParamList, 'AssignWorkout'>>();
+  const insets = useSafeAreaInsets();
   const { user, profile } = useAuth();
   const { showToast } = useToast();
   const gymId = profile?.gymId || DEFAULT_GYM_ID;
@@ -426,25 +428,51 @@ export function AssignWorkoutScreen() {
         onRequestClose={() => setPickerOpen(false)}
       >
         <ScreenContainer>
-          <View className="flex-1 px-6 py-6">
+          <View
+            className="flex-1 px-6 pt-6"
+            style={{ paddingBottom: Math.max(insets.bottom + 8, 24) }}
+          >
             <Text className="text-2xl font-bold text-slate-900">Add Exercise</Text>
             <View className="mt-4">
               <TextInput label="Search" value={search} onChangeText={setSearch} />
             </View>
-            <ScrollView horizontal className="mt-3" style={{ flexGrow: 0 }}>
-              <View className="flex-row gap-2">
-                {[{ id: 'all', name: 'All' }, ...categories].map((item) => (
-                  <Pressable key={item.id} onPress={() => setCategoryId(item.id)}>
-                    <Text
-                      className={`rounded-full px-3 py-2 ${categoryId === item.id ? 'bg-brand-600 text-white' : 'bg-slate-200 text-slate-700'}`}
-                    >
-                      {item.name}
-                    </Text>
-                  </Pressable>
-                ))}
-              </View>
+            <ScrollView
+              horizontal
+              className="mt-3"
+              contentContainerStyle={{
+                alignItems: 'center',
+                gap: 8,
+                paddingVertical: 6,
+              }}
+              keyboardShouldPersistTaps="handled"
+              showsHorizontalScrollIndicator={false}
+              style={{ flexGrow: 0, height: 56 }}
+            >
+              {[{ id: 'all', name: 'All' }, ...categories].map((item) => (
+                <Pressable
+                  key={item.id}
+                  className={`min-h-10 justify-center rounded-full px-4 ${
+                    categoryId === item.id ? 'bg-brand-600' : 'bg-slate-200'
+                  }`}
+                  onPress={() => setCategoryId(item.id)}
+                >
+                  <Text
+                    className={`font-semibold ${
+                      categoryId === item.id ? 'text-white' : 'text-slate-700'
+                    }`}
+                  >
+                    {item.name}
+                  </Text>
+                </Pressable>
+              ))}
             </ScrollView>
-            <ScrollView className="mt-4" keyboardShouldPersistTaps="handled">
+            <ScrollView
+              className="mt-4 flex-1"
+              contentContainerStyle={{ paddingBottom: 16 }}
+              keyboardDismissMode="on-drag"
+              keyboardShouldPersistTaps="handled"
+              showsVerticalScrollIndicator={false}
+            >
               <View className="gap-3">
                 {filteredExercises.map((item) => (
                   <ChoiceRow

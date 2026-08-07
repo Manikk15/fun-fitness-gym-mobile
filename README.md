@@ -32,6 +32,11 @@ starts or bundles the app. Do not place service-account credentials or other
 private secrets in this file: public Expo variables are embedded in the client
 application.
 
+For cloud builds, add the same variables to the EAS `development`, `preview`,
+and `production` environments. Each build profile in `eas.json` selects its
+matching environment. The `eas-build-post-install` check stops a cloud build
+before bundling if any required Firebase value is missing.
+
 Then scan the QR code with Expo Go, or use one of the platform commands:
 
 ```bash

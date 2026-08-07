@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Alert, Pressable, ScrollView, Text, View } from 'react-native';
+import { Alert, Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
 import type { RouteProp } from '@react-navigation/native';
@@ -230,9 +230,8 @@ export function MemberWorkoutDetailsScreen() {
   const completedExercises = items.filter(exerciseCompleted).length;
 
   return (
-    <ScreenContainer>
-      <ScrollView>
-        <View className="gap-3 px-6 py-8">
+    <ScreenContainer scroll>
+      <View className="gap-3 px-6 py-8">
           <Text className="text-3xl font-bold text-slate-900">
             {params.workoutName}
           </Text>
@@ -384,8 +383,7 @@ export function MemberWorkoutDetailsScreen() {
               onPress={finish}
             />
           ) : null}
-        </View>
-      </ScrollView>
+      </View>
     </ScreenContainer>
   );
 }

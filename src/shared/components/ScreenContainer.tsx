@@ -22,11 +22,17 @@ export function ScreenContainer({
       edges={['top', 'left', 'right']}
     >
       <KeyboardAvoidingView
-        behavior={Platform.select({ ios: 'padding', default: undefined })}
+        behavior={Platform.select({ ios: 'padding', android: 'height' })}
         className="flex-1"
       >
         {scroll ? (
-          <ScrollView className="flex-1" keyboardShouldPersistTaps="handled">
+          <ScrollView
+            className="flex-1"
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+          >
             {content}
           </ScrollView>
         ) : (

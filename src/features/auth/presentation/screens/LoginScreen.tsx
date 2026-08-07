@@ -40,11 +40,11 @@ export function LoginScreen() {
   };
 
   return (
-    <ScreenContainer scroll contentClassName="justify-center px-6 py-10">
-      <View className="mb-10">
+    <ScreenContainer scroll contentClassName="px-6 pb-8 pt-4">
+      <View className="mb-7">
         <Image
           accessibilityLabel="Fun Fitness Gym logo"
-          className="mb-6 h-40 w-full"
+          className="mb-3 h-28 w-full"
           resizeMode="contain"
           source={require('../../../../../assets/fun-fitness-logo-full.png')}
         />
@@ -69,6 +69,7 @@ export function LoginScreen() {
               autoComplete="email"
               keyboardType="email-address"
               label="Email address"
+              returnKeyType="next"
               onBlur={onBlur}
               onChangeText={onChange}
               placeholder="you@example.com"
@@ -87,6 +88,8 @@ export function LoginScreen() {
               onBlur={onBlur}
               onChangeText={onChange}
               placeholder="Enter your password"
+              returnKeyType="done"
+              onSubmitEditing={handleSubmit(onSubmit)}
               value={value}
               error={errors.password?.message}
             />

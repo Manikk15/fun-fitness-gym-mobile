@@ -46,7 +46,7 @@ export function ForgotPasswordScreen() {
   };
 
   return (
-    <ScreenContainer contentClassName="justify-center px-6 py-10">
+    <ScreenContainer scroll contentClassName="justify-center px-6 py-10">
       <View className="mb-10">
         <Text className="text-sm font-bold uppercase tracking-widest text-brand-600">
           Account recovery
